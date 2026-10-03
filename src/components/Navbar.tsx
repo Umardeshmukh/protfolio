@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, FileText } from 'lucide-react';
+import { MatrixText } from './MatrixText';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -85,10 +86,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="text-lg font-display font-semibold tracking-tight text-[#F5F7FA] hover:text-[#FFFFFF] flex items-center gap-2 transition-colors"
+          className="text-lg font-display font-semibold tracking-tight text-[#F5F7FA] hover:text-[#FFFFFF] flex items-center gap-2 transition-colors group"
         >
-          <span className="w-2 h-2 rounded-full bg-[#7C5CFC]" />
-          <span>Mohammed Umer</span>
+          <span className="w-2 h-2 rounded-full bg-[#7C5CFC] group-hover:shadow-[0_0_8px_#7C5CFC] transition-all" />
+          <MatrixText text="Mohammed Umer" trigger="hover" revealSpeed={0.45} />
         </a>
 
         {/* Zone 2: 4-6 clean text navigation links */}

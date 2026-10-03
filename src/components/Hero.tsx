@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, FileText, CheckCircle2, MapPin, Mail, Phone, Code2, Briefcase, User } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { MatrixText } from './MatrixText';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -26,12 +27,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ADE80] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ADE80]" />
               </span>
-              <span>{PORTFOLIO_DATA.personal.status}</span>
+              <MatrixText text={PORTFOLIO_DATA.personal.status} trigger="both" revealSpeed={0.4} />
             </div>
 
             {/* Main Display Heading (Space Grotesk, 72px scale, controlled accent) */}
             <h1 className="text-[42px] sm:text-[56px] lg:text-[66px] xl:text-[72px] font-display font-semibold text-[#F5F7FA] tracking-[-0.04em] leading-[1.05] sm:leading-[1.0] text-balance">
-              Building <span className="text-[#7C5CFC]">responsive web apps</span> & orchestrating client success.
+              Building{' '}
+              <MatrixText
+                text="responsive web apps"
+                trigger="view"
+                scrambleClassName="text-[#A996FF]"
+                className="text-[#7C5CFC]"
+                revealSpeed={0.35}
+              />{' '}
+              & orchestrating client success.
             </h1>
 
             {/* Body Large Description (18px, 1.7 line-height) */}
@@ -82,24 +91,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           {/* Right Column: Hero Portrait Blended into the Dark Visual System */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[400px] group">
-              {/* Subtle ambient purple glow backlight behind the portrait */}
-              <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#7C5CFC]/25 via-[#9278FF]/15 to-transparent rounded-[26px] blur-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="relative w-full max-w-[420px] group">
+              {/* Dual-layer ambient purple/indigo glow backlights behind the portrait */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#7C5CFC]/30 via-[#4F46E5]/20 to-[#2563EB]/10 rounded-[30px] blur-3xl opacity-70 group-hover:opacity-100 group-hover:blur-2xl transition-all duration-700 pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#7C5CFC]/15 rounded-full blur-[80px] pointer-events-none" />
 
-              {/* Portrait Container with dark border & surface */}
-              <div className="relative rounded-[22px] bg-[#0D0F12] border border-[#232730] p-3 sm:p-3.5 overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
+              {/* Portrait Container with dark border & technical surface */}
+              <div className="relative rounded-[24px] bg-[#0D0F12] border border-[#232730] p-3 sm:p-4 overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-[#303540] hover:shadow-[0_24px_80px_rgba(124,92,252,0.14)]">
+                
+                {/* HUD Corner Reticles for High-Tech Aesthetic */}
+                <div className="absolute top-2.5 left-2.5 w-3 h-3 border-t-2 border-l-2 border-[#7C5CFC]/60 rounded-tl pointer-events-none z-20" />
+                <div className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-[#7C5CFC]/60 rounded-tr pointer-events-none z-20" />
+                <div className="absolute bottom-2.5 left-2.5 w-3 h-3 border-b-2 border-l-2 border-[#7C5CFC]/60 rounded-bl pointer-events-none z-20" />
+                <div className="absolute bottom-2.5 right-2.5 w-3 h-3 border-b-2 border-r-2 border-[#7C5CFC]/60 rounded-br pointer-events-none z-20" />
+
                 {/* Image Frame with gradient blend overlays */}
-                <div className="relative w-full aspect-[3/4] rounded-[16px] overflow-hidden bg-[#08090B]">
+                <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden bg-[#08090B]">
                   {!imageError ? (
                     <img
-                      src="IMG_20230818_000832_0929.jpg"
+                      src="/heroimg.jpg"
                       alt="Mohammed Umer Deshmukh - Frontend Developer & Project Coordinator"
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[0.98] transition-all duration-700 ease-out group-hover:scale-[1.02]"
+                      className="w-full h-full object-cover object-[center_14%] filter contrast-[1.08] brightness-[0.98] saturate-[1.05] transition-all duration-700 ease-out group-hover:scale-[1.03]"
                       onError={() => setImageError(true)}
                     />
                   ) : (
-                    /* Stylized fallback portrait container if direct blob is unavailable */
+                    /* Stylized fallback portrait container if image fails to load */
                     <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#12151A] via-[#0D0F12] to-[#08090B] text-center relative overflow-hidden">
                       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
                       <div className="w-24 h-24 rounded-full bg-[#171A20] border-2 border-[#7C5CFC] flex items-center justify-center text-[#7C5CFC] mb-4 shadow-[0_0_30px_rgba(124,92,252,0.3)]">
@@ -117,38 +134,62 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                     </div>
                   )}
 
-                  {/* Seamless gradient blending overlays that fade the photo edges into the #0D0F12 card background */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D0F12] via-[#0D0F12]/35 to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#08090B]/30 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0D0F12] via-[#0D0F12]/90 to-transparent pointer-events-none" />
+                  {/* Seamless gradient blending overlays that integrate the photo into the dark palette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-[#08090B]/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#08090B]/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#08090B] via-[#08090B]/85 to-transparent pointer-events-none" />
 
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-3.5 left-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#08090B]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#F5F7FA]">
-                    <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse" />
-                    <span>iTUX Technologies</span>
+                  {/* Top Floating Glass Badges */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#08090B]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#F5F7FA] shadow-md">
+                      <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse" />
+                      <MatrixText text="Available for Hire" trigger="hover" />
+                    </div>
+
+                    <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#08090B]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#A7ADB7] shadow-md cursor-pointer hover:border-[#7C5CFC]/50 transition-colors">
+                      <Code2 className="w-3 h-3 text-[#7C5CFC]" />
+                      <MatrixText text="React · TS" trigger="hover" />
+                    </div>
                   </div>
 
-                  {/* Floating Bottom Card Overlaid on Image */}
-                  <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-[12px] bg-[#08090B]/90 backdrop-blur-md border border-[#232730] space-y-1">
+                  {/* Floating Bottom Glass Card Overlaid on Image */}
+                  <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-[14px] bg-[#0D0F12]/85 backdrop-blur-md border border-[#232730] space-y-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-display font-semibold text-[#F5F7FA]">
-                        Mohammed Umer Deshmukh
+                      <span className="font-display font-semibold text-[#F5F7FA] text-[13px] tracking-tight flex items-center gap-1.5">
+                        <MatrixText text="Mohammed Umer Deshmukh" trigger="hover" revealSpeed={0.4} />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#7C5CFC]" />
                       </span>
-                      <span className="font-mono text-[10px] text-[#4ADE80]">Active</span>
+                      <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#4ADE80]/10 text-[#4ADE80] border border-[#4ADE80]/20 font-medium">
+                        Active
+                      </span>
                     </div>
+
                     <p className="text-[11px] text-[#A7ADB7] leading-tight">
-                      Frontend Developer & Project Coordinator · Remote
+                      <MatrixText text="Frontend Developer & Project Coordinator · iTUX Tech" trigger="hover" revealSpeed={0.4} />
                     </p>
+
+                    <div className="pt-1 border-t border-[#191C22] flex items-center justify-between text-[10px] font-mono text-[#6F7682]">
+                      <span className="flex items-center gap-1 text-[#A7ADB7]">
+                        <span className="text-[#7C5CFC]">📍</span>
+                        <span>Aurangabad, IN</span>
+                      </span>
+                      <span className="text-[#A7ADB7]">
+                        2+ Yrs Experience
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Under-Card Quick Facts Strip */}
-                <div className="mt-3 px-2 flex items-center justify-between text-xs font-mono text-[#6F7682]">
-                  <span className="flex items-center gap-1 text-[#A7ADB7]">
-                    <span className="text-[#7C5CFC]">📍</span>
-                    <span>Aurangabad, India</span>
-                  </span>
-                  <span className="text-[#4ADE80]">● Open to Remote Roles</span>
+                {/* Under-Card Quick Highlights Strip */}
+                <div className="mt-3 px-1.5 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-1.5 text-[#A7ADB7]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFC]" />
+                    <span>B.Tech CS (2024)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[#4ADE80]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80] animate-pulse" />
+                    <span>100% Delivery Rate</span>
+                  </div>
                 </div>
               </div>
             </div>

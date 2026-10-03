@@ -40,9 +40,58 @@
 .bg-hero-glow {
   background-image: radial-gradient(
     circle at 50% 0%,
-    rgba(124, 92, 252, 0.12),
+    rgba(124, 92, 252, 0.10),
     transparent 50%
   );
+}
+
+/* Super smooth subtle ambient background gradient animations */
+@keyframes ambient-drift-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(70px, 50px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-50px, 35px, 0) scale(0.96);
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-60px, -45px, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(45px, -60px, 0) scale(0.94);
+  }
+}
+
+@keyframes ambient-drift-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, -35px, 0) scale(1.12);
+  }
+}
+
+.animate-ambient-1 {
+  animation: ambient-drift-1 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.animate-ambient-2 {
+  animation: ambient-drift-2 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.animate-ambient-3 {
+  animation: ambient-drift-3 26s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
 }
 
 /* Custom scrollbar for dark minimal theme */

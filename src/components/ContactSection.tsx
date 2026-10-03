@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Mail, Copy, Check, Send, Github, Linkedin, Twitter, Clock, CheckCircle2, MessageSquare } from 'lucide-react';
+import { MatrixText } from './MatrixText';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
@@ -41,7 +42,7 @@ export const ContactSection: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="text-[12px] uppercase tracking-[0.12em] text-[#7C5CFC] font-medium font-mono">
-            05 — CONTACT
+            <MatrixText text="05 — CONTACT" trigger="view" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-semibold text-[#F5F7FA] leading-[1.1] tracking-[-0.03em]">
             Let's Build Something Together

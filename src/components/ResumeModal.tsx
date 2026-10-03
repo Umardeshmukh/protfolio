@@ -176,33 +176,23 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Key Projects */}
-          <div className="space-y-3">
-            <h2 className="text-xs font-mono text-[#7C5CFC] uppercase tracking-wider font-semibold">
-              Highlighted Projects
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="p-4 rounded-[10px] bg-[#12151A] border border-[#232730] space-y-1">
-                <div className="font-semibold text-[#F5F7FA] text-xs">Group Scheduler App (React.js)</div>
-                <p className="text-[11px] text-[#A7ADB7]">
-                  Built a responsive scheduling application with REST API integration, time-slot selection, and conflict handling.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-[10px] bg-[#12151A] border border-[#232730] space-y-1">
-                <div className="font-semibold text-[#F5F7FA] text-xs">Unemployment Data Analysis</div>
-                <p className="text-[11px] text-[#A7ADB7]">
-                  Visualized unemployment trends using Python, Pandas and Matplotlib for clear demographic reporting.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-[10px] bg-[#12151A] border border-[#232730] space-y-1 sm:col-span-2">
-                <div className="font-semibold text-[#F5F7FA] text-xs">Personal Portfolio Website</div>
-                <p className="text-[11px] text-[#A7ADB7]">
-                  Developed a responsive personal portfolio using React.js and Tailwind CSS with dark technical aesthetics.
-                </p>
+          {PORTFOLIO_DATA.projects.length > 0 && (
+            <div className="space-y-3">
+              <h2 className="text-xs font-mono text-[#7C5CFC] uppercase tracking-wider font-semibold">
+                Highlighted Projects
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {PORTFOLIO_DATA.projects.map((proj) => (
+                  <div key={proj.id} className="p-4 rounded-[10px] bg-[#12151A] border border-[#232730] space-y-1">
+                    <div className="font-semibold text-[#F5F7FA] text-xs">{proj.title}</div>
+                    <p className="text-[11px] text-[#A7ADB7] line-clamp-2">
+                      {proj.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          )}
 
           {/* Skills Breakdown */}
           <div className="space-y-3">

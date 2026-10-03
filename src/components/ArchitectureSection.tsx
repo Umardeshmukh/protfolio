@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Terminal, Layers, Server, Monitor, Activity, CheckCircle, Copy, Check } from 'lucide-react';
+import { MatrixText } from './MatrixText';
+import { TorchCard } from './TorchCard';
 
 export const ArchitectureSection: React.FC = () => {
   const [selectedSkillId, setSelectedSkillId] = useState<string>(PORTFOLIO_DATA.skills[0].id);
@@ -36,7 +38,7 @@ export const ArchitectureSection: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="text-[12px] uppercase tracking-[0.12em] text-[#7C5CFC] font-medium font-mono">
-            03 — ARCHITECTURE & SKILLS
+            <MatrixText text="03 — ARCHITECTURE & SKILLS" trigger="view" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-semibold text-[#F5F7FA] leading-[1.1] tracking-[-0.03em]">
             Technical Stack & Core Skills
@@ -94,15 +96,26 @@ export const ArchitectureSection: React.FC = () => {
             })}
           </div>
 
-          {/* Interactive Inspection Details Container */}
-          <div className="lg:col-span-7 rounded-[16px] bg-[#0D0F12] border border-[#232730] p-6 lg:p-8 space-y-6">
+          {/* Interactive Inspection Details Container with Torch Effect */}
+          <TorchCard
+            className="lg:col-span-7 p-6 lg:p-8 space-y-6"
+            torchColor="rgba(124, 92, 252, 0.15)"
+            borderGlowColor="rgba(146, 120, 255, 0.45)"
+            torchRadius={380}
+          >
             <div className="flex items-center justify-between border-b border-[#191C22] pb-4">
               <div>
                 <span className="text-xs font-mono text-[#7C5CFC] uppercase tracking-wider">
                   Pattern Signature
                 </span>
                 <h4 className="text-lg font-display font-semibold text-[#F5F7FA] mt-0.5">
-                  {activeSkill.patternName}
+                  <MatrixText
+                    key={activeSkill.patternName}
+                    text={activeSkill.patternName}
+                    trigger="mount"
+                    revealSpeed={0.5}
+                    scrambleClassName="text-[#A996FF]"
+                  />
                 </h4>
               </div>
 
@@ -162,7 +175,7 @@ export const ArchitectureSection: React.FC = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </TorchCard>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ShieldCheck, Zap, Cpu, Terminal, ArrowUpRight } from 'lucide-react';
+import { MatrixText } from './MatrixText';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const AboutSection: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="text-[12px] uppercase tracking-[0.12em] text-[#7C5CFC] font-medium font-mono">
-            01 — ABOUT
+            <MatrixText text="01 — ABOUT" trigger="view" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-semibold text-[#F5F7FA] leading-[1.1] tracking-[-0.03em]">
             Bridging Frontend Code & Operational Delivery

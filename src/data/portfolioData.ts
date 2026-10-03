@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  category: 'Frontend Engineering' | 'Data Analysis & Python' | 'Administrative & PM';
+  category: string;
   description: string;
   longDescription: string;
   tags: string[];
@@ -51,6 +51,8 @@ export const PORTFOLIO_DATA = {
     email: 'umardesh@gmail.com',
     github: 'https://github.com/umardesh',
     linkedin: 'https://linkedin.com',
+    avatar: '/heroimg.jpg',
+    heroImage: '/heroimg.jpg',
     status: 'Available for remote Frontend & Coordination opportunities',
     timezone: 'India Standard Time (IST / UTC+5:30)',
     bio: 'Results-driven professional with 2+ years of experience in Frontend Development, Administrative Management, and Project Coordination. Experienced in developing responsive web applications using React.js and Tailwind CSS, managing client communication, documentation, reporting, and coordinating multiple projects in remote environments.',
@@ -79,190 +81,199 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: 'group-scheduler',
-      title: 'Group Scheduler App',
-      tagline: 'Responsive scheduling application with real-time REST API integration',
+      id: 'mahaposhan-register',
+      title: 'MahaPoshan Register',
+      tagline: 'PM POSHAN daily school register, grain stock manager & certified report generation',
       category: 'Frontend Engineering',
-      description: 'A responsive calendar and group coordination web app built in React.js, featuring automated time-slot calculation, booking management, and REST API data synchronization.',
-      longDescription: 'Engineered to eliminate manual back-and-forth scheduling. The application provides dynamic calendar grids, responsive mobile slot pickers, instant client confirmation modals, and clean state synchronization with backend REST endpoints.',
-      tags: ['React.js', 'JavaScript', 'REST API', 'HTML5', 'Tailwind CSS', 'CSS3'],
+      description: 'A specialized PWA and inventory system designed for Maharashtra schools to automate daily PM-POSHAN student headcount meal calculations, grain stock ledgers, and official Schedule-II Part-2 PDF/Excel reporting.',
+      longDescription: 'Engineered to eliminate error-prone manual register entries for elementary and upper primary educators across Maharashtra. The application provides dynamic headcount meal calculation formulas, inward grain stock balance tracking, offline-first local storage synchronization, and one-tap generation of certified Government Part-2 landscape reports formatted in Excel and print-ready PDF.',
+      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'PWA', 'ExcelJS', 'jsPDF', 'Clerk Auth', 'LocalStorage'],
       metrics: [
-        { label: 'Device Support', value: '100% Responsive' },
-        { label: 'API Sync Latency', value: '< 150ms' },
-        { label: 'Booking Flow', value: '3-Step Streamlined' },
+        { label: 'Reporting Accuracy', value: '100% Certified' },
+        { label: 'Time Saved', value: '15+ hrs/month' },
+        { label: 'Architecture', value: 'Offline-First PWA' },
       ],
-      problem: 'Coordinating meeting windows across remote stakeholders was prone to time-slot overlaps, missing calendar invites, and messy email trails.',
-      solution: 'Constructed an intuitive React.js scheduling portal with client-side form validation, dynamic time slot disable states, and clean RESTful payload dispatch.',
+      problem: 'Educators across Maharashtra spent hours calculating daily grain quotas, oil/condiment budgets, and handwriting complex Government Part-2 inspection registers each month.',
+      solution: 'Constructed an offline-ready mobile-first web app with automated student entitlement formulas, dynamic grain inventory ledgers, multi-role authentication, and official PDF/Excel export.',
       architectureHighlights: [
-        'Component-driven calendar grid with responsive breakpoint adaptation',
-        'Stateful meeting booking workflow with optimistic UI updates',
-        'Modular REST API client handling payload validation and error states',
-        'Clean, accessible design adhering to mobile-first touch targets',
+        'Offline-first data persistence using browser LocalStorage and automatic cloud synchronization',
+        'High-performance client-side Excel (.xlsx) and certified landscape A4 PDF compilation',
+        'Deterministic grain and nutritional calculation engine compliant with Maharashtra state norms',
+        'Authentication & multi-tenant school profile management with Clerk',
       ],
       benchmarks: [
-        { name: 'Initial Paint (FCP)', score: '0.8s', comparison: 'Optimized React bundle loading' },
-        { name: 'Scheduling Time', score: '< 30 sec', comparison: 'Reduced meeting booking friction by 70%' },
+        { name: 'Report Generation', score: '< 1.2s', comparison: 'Instant client-side PDF/XLSX build' },
+        { name: 'Offline Readiness', score: '100%', comparison: 'Zero data loss during rural connectivity drops' },
       ],
       codeSnippet: {
-        filename: 'src/components/SchedulerGrid.jsx',
-        language: 'javascript',
-        code: `export const SchedulerGrid = ({ slots, onSelectSlot, selectedDate }) => {
-  const [selectedSlot, setSelectedSlot] = useState(null);
+        filename: 'src/utils/nutritionCalculations.ts',
+        language: 'typescript',
+        code: `export const calculateDailyMDMAllocation = (
+  primaryHeadcount: number,
+  upperPrimaryHeadcount: number
+): DailyEntitlement => {
+  // Maharashtra State Government Norms (grams/student)
+  const primaryGrainQuota = primaryHeadcount * 100; // 100g rice/wheat
+  const upperPrimaryGrainQuota = upperPrimaryHeadcount * 150; // 150g rice/wheat
+  const cookingCostPerPrimary = 5.45; // INR
+  const cookingCostPerUpper = 8.17; // INR
 
-  const handleBooking = async (slotId) => {
-    try {
-      const response = await api.post('/api/schedules/reserve', {
-        date: selectedDate,
-        slotId: slotId,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      });
-      if (response.data.success) {
-        onSelectSlot(response.data.booking);
-      }
-    } catch (err) {
-      console.error('Slot reservation failed', err);
-    }
+  return {
+    totalGrainGrams: primaryGrainQuota + upperPrimaryGrainQuota,
+    totalCookingBudget: (primaryHeadcount * cookingCostPerPrimary) + (upperPrimaryHeadcount * cookingCostPerUpper),
+    formattedKg: ((primaryGrainQuota + upperPrimaryGrainQuota) / 1000).toFixed(2),
   };
-
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-      {slots.map(slot => (
-        <SlotCard key={slot.id} slot={slot} onBook={handleBooking} />
-      ))}
-    </div>
-  );
 };`,
       },
       githubUrl: 'https://github.com/umardesh',
-      demoUrl: 'https://github.com/umardesh',
+      demoUrl: 'https://poshanregister.vercel.app/',
       visualType: 'stream-db',
     },
     {
-      id: 'unemployment-analysis',
-      title: 'Unemployment Data Analysis',
-      tagline: 'Visualized unemployment trends using Python, Pandas and Matplotlib',
-      category: 'Data Analysis & Python',
-      description: 'In-depth statistical visualization analyzing regional and temporal unemployment trends to extract meaningful macroeconomic labor patterns.',
-      longDescription: 'Conducted exploratory data analysis (EDA) across nationwide employment survey datasets. Leveraged Pandas for data cleansing, aggregation, and outlier detection, rendering intuitive trendline charts and heatmaps using Matplotlib.',
-      tags: ['Python', 'Pandas', 'Matplotlib', 'Data Visualization', 'EDA'],
+      id: 'propsetu-real-estate',
+      title: 'propSetu Real Estate Discovery',
+      tagline: 'Modern verified property discovery platform with direct owner connections & geospatial maps',
+      category: 'Frontend Engineering',
+      description: 'A modern real estate discovery and verified housing marketplace featuring direct owner connection, 3-Point Property Passport verification, and interactive Leaflet map exploration.',
+      longDescription: 'Built to disrupt broker-heavy property search friction. propSetu features interactive geolocation map browsing, dynamic multi-attribute filtering (BHK, price ranges, verified status, amenities), responsive property media galleries, and direct lead coordination for residential and commercial spaces.',
+      tags: ['React.js', 'Tailwind CSS', 'Leaflet.js', 'Interactive Maps', 'TypeScript', 'REST API', 'Responsive UI'],
       metrics: [
-        { label: 'Data Processing', value: 'Vectorized Pandas' },
-        { label: 'Trend Visuals', value: 'Matplotlib & Seaborn' },
-        { label: 'Accuracy', value: '100% Cleansed' },
+        { label: 'Brokerage Fees', value: 'Zero Middlemen' },
+        { label: 'Verification', value: '3-Point Passport' },
+        { label: 'Map Search', value: 'Real-time Leaflet' },
       ],
-      problem: 'Raw labor statistics contained missing demographic fields, inconsistent regional date formats, and lacked actionable visual representations for non-analysts.',
-      solution: 'Engineered an automated Python cleaning pipeline that imputed missing records, calculated moving averages, and produced high-contrast visual trend charts.',
+      problem: 'Prospective tenants and home buyers faced repetitive broker fees, fake listings, and difficult geographic boundary comparisons across listing sites.',
+      solution: 'Developed an interactive geospatial portal with verified property pass marks, direct owner contact workflows, and responsive modal inspection.',
       architectureHighlights: [
-        'Pandas dataframe cleansing and feature engineering for time-series trends',
-        'Matplotlib subplots comparing pre and post-economic disruption rates',
-        'State-wise and demographic correlation matrix computation',
-        'Exportable executive summaries for administrative decision making',
+        'Geospatial clustering with Leaflet map markers and synchronous list-view coordinates',
+        'Advanced multi-criteria filtering matrix supporting real-time URL state preservation',
+        'Lightweight modern design token architecture adhering to WCAG contrast standards',
+        'Direct owner contact lead gateway with spam-protected WhatsApp and dialer integration',
       ],
       benchmarks: [
-        { name: 'Data Pipeline Run', score: '< 2.4s', comparison: 'Vectorized NumPy & Pandas operations' },
-        { name: 'Report Generation', score: 'Automated', comparison: 'One-click chart generation' },
+        { name: 'Map Marker Render', score: '60 FPS', comparison: 'Smooth tile transitions & clustered pins' },
+        { name: 'Search Latency', score: '< 65ms', comparison: 'Client-side indexed property filtering' },
       ],
       codeSnippet: {
-        filename: 'analysis/unemployment_trends.py',
-        language: 'python',
-        code: `import pandas as pd
-import matplotlib.pyplot as plt
-
-def analyze_labor_trends(filepath):
-    df = pd.read_csv(filepath)
-    df.dropna(subset=['Estimated Unemployment Rate (%)'], inplace=True)
-    df['Date'] = pd.to_datetime(df['Date'].str.strip())
-    
-    # 30-day rolling average to smooth volatility
-    df['Rolling_Mean'] = df.groupby('Region')['Estimated Unemployment Rate (%)'].transform(
-        lambda s: s.rolling(window=3, min_periods=1).mean()
-    )
-    
-    plt.figure(figsize=(12, 6))
-    for region, data in df.groupby('Region'):
-        plt.plot(data['Date'], data['Rolling_Mean'], label=region)
-    plt.title('Regional Unemployment Trends Over Time')
-    plt.savefig('output/unemployment_trends.png', dpi=300)
-    return df`,
+        filename: 'src/components/PropertyMapExplorer.tsx',
+        language: 'typescript',
+        code: `export const usePropertyGeoCluster = (properties: PropertyItem[], mapBounds: LatLngBounds) => {
+  return useMemo(() => {
+    return properties
+      .filter(item => item.isVerifiedPassport && mapBounds.contains([item.lat, item.lng]))
+      .map(item => ({
+        id: item.id,
+        position: [item.lat, item.lng] as [number, number],
+        priceFormatted: formatCurrency(item.price),
+        specs: \`\${item.bhk} BHK • \${item.carpetArea} sq.ft\`,
+        isDirectOwner: item.ownerDirectVerification,
+      }));
+  }, [properties, mapBounds]);
+};`,
       },
       githubUrl: 'https://github.com/umardesh',
-      demoUrl: 'https://github.com/umardesh',
+      demoUrl: 'https://propertyconnect-amber.vercel.app/',
       visualType: 'vector-engine',
     },
     {
-      id: 'personal-portfolio',
-      title: 'Modern Responsive Portfolio',
-      tagline: 'Technical portfolio platform with Space Grotesk and Inter design system',
-      category: 'Frontend Engineering',
-      description: 'A responsive personal portfolio website built with React.js and Tailwind CSS, featuring dark mode aesthetics, interactive HUD elements, and resume generation.',
-      longDescription: 'Designed from the ground up to reflect a dark, premium, technical visual design system. Features real-time state management, interactive canvas mesh visuals, accessible modals, and seamless mobile responsiveness.',
-      tags: ['React.js', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3', 'Git'],
+      id: 'chandrama-hvac',
+      title: 'Chandrama Commercial AC Solutions',
+      tagline: 'Commercial & industrial air conditioning sales, preventative maintenance & service platform',
+      category: 'Commercial & Enterprise',
+      description: 'A sleek, modern commercial HVAC web platform showcasing VRF/ductable AC sales, industrial maintenance contracts, cooling telemetry, and technical consultation inquiry pipelines.',
+      longDescription: 'Designed for commercial facilities, factories, and corporate venues. Features smooth Framer Motion page transitions, animated interactive HVAC visualizers, categorized service breakdowns, and an inquiry routing engine for maintenance contracts and heat-load consultations.',
+      tags: ['React.js', 'Framer Motion', 'Tailwind CSS', 'Modern CSS', 'Lead Generation', 'UI/UX Design'],
       metrics: [
-        { label: 'Responsive Design', value: 'Mobile to 4K' },
-        { label: 'Design Tokens', value: '8px Spacing' },
-        { label: 'Design Identity', value: 'Dark / Minimal' },
+        { label: 'Service Coverage', value: 'VRF & Industrial' },
+        { label: 'System Uptime Focus', value: '98% Efficiency' },
+        { label: 'Lead Flow', value: 'Direct Inquiries' },
       ],
-      problem: 'Generic portfolio templates failed to represent both frontend technical expertise and administrative/coordination rigor with high aesthetic standards.',
-      solution: 'Crafted a bespoke, typography-driven portfolio with strict contrast ratios, zero-pill discipline, interactive inspection tools, and complete curriculum vitae preview.',
+      problem: 'Commercial HVAC enterprises often rely on static, outdated catalogs that fail to communicate complex system capacities, maintenance tiers, or industrial credibility.',
+      solution: 'Created an engaging, responsive digital presence featuring animated equipment diagrams, interactive service catalogs, and streamlined inquiry dispatch.',
       architectureHighlights: [
-        'Modular React architecture with functional components and clean state isolation',
-        'Tailwind CSS v4 styling with centralized design tokens and color system',
-        'Interactive HTML5 Canvas cluster visualizer with physics and telemetry',
-        'Accessible modal dialogs with keyboard listeners and printable resume format',
+        'Framer Motion animated route transitions with layout consistency and zero jank',
+        'Custom animated HVAC efficiency visualizer and interactive telemetry components',
+        'Accessible inquiry forms with validation and mobile touch-friendly call/email triggers',
+        'High-contrast, industrial aesthetic tailored for corporate and facility manager audiences',
       ],
       benchmarks: [
-        { name: 'Core Web Vitals', score: 'Pass', comparison: 'Zero layout shifts & fast FCP' },
-        { name: 'Accessibility', score: 'WCAG AA', comparison: '4.5:1+ contrast across all surfaces' },
+        { name: 'Page Transitions', score: '350ms', comparison: 'Silky smooth Framer Motion exits and enters' },
+        { name: 'Mobile Responsiveness', score: '100%', comparison: 'Touch-optimized drawer navigation' },
       ],
       codeSnippet: {
-        filename: 'src/App.jsx',
-        language: 'javascript',
-        code: `export default function Portfolio() {
-  const [activeModal, setActiveModal] = useState(null);
+        filename: 'src/components/HVACDiagnosticEngine.tsx',
+        language: 'typescript',
+        code: `export const computeFacilityHeatLoad = (
+  floorAreaSqFt: number,
+  occupancyHeadcount: number,
+  sunExposure: 'North' | 'South' | 'East' | 'West'
+): CoolingRequirement => {
+  const baseBTU = floorAreaSqFt * 25; // 25 BTU/sq ft base
+  const humanHeatGain = occupancyHeadcount * 400; // 400 BTU per person
+  const solarMultiplier = sunExposure === 'West' ? 1.25 : 1.1;
 
-  return (
-    <div className="bg-[#08090B] text-[#F5F7FA] font-sans antialiased">
-      <Navbar onOpenResume={() => setActiveModal('resume')} />
-      <Hero />
-      <ProjectsSection onSelect={(proj) => setActiveModal(proj)} />
-      <ExperienceSection />
-      <ContactSection />
-    </div>
-  );
-}`,
+  const totalTonnage = ((baseBTU + humanHeatGain) * solarMultiplier) / 12000;
+  return {
+    recommendedTonnage: Math.ceil(totalTonnage * 10) / 10,
+    suggestedSystem: totalTonnage > 15 ? 'VRF Multi-Split' : 'Ductable Split Unit',
+    serviceTier: 'Quarterly Scheduled Preventative',
+  };
+};`,
       },
       githubUrl: 'https://github.com/umardesh',
-      demoUrl: 'https://github.com/umardesh',
-      visualType: 'cloud-mesh',
+      demoUrl: 'https://devchandrama.vercel.app/',
+      visualType: 'crdt-collab',
     },
     {
-      id: 'operations-crm-suite',
-      title: 'Operations & Client Coordination Suite',
-      tagline: 'Client communication, CRM lead tracking, and MIS reporting workflows',
-      category: 'Administrative & PM',
-      description: 'Streamlined operational framework developed at iTUX Technologies to manage client requirements, meeting schedules, CRM follow-ups, and documentation.',
-      longDescription: 'Harmonized technical sprint delivery with administrative excellence. Coordinated client communication channels, scheduled multi-time-zone executive calendars, authored standard operating procedures (SOPs), and built Excel MIS dashboards for tracking project progress.',
-      tags: ['CRM Management', 'Advanced Excel', 'Project Coordination', 'SOPs', 'Client Communication'],
+      id: 'mahabuild-engineers',
+      title: 'MahaBuild Engineers Construction Platform',
+      tagline: 'Engineer-led home construction & transparent costing platform with 3D models & WhatsApp consultation',
+      category: 'Commercial & Enterprise',
+      description: 'A professional civil engineering and construction web platform featuring 3D home models, stage-wise budget calculators, before/after transformation galleries, and instant WhatsApp consultation booking.',
+      longDescription: 'Engineered to bring transparency to residential home construction for middle-class and NRI families in Maharashtra. Features interactive Three.js 3D architectural showcases, interactive 5-stage quality process trackers, before/after project sliders, and dynamic budget assessment lead funnels.',
+      tags: ['React.js', 'Three.js / 3D', 'Tailwind CSS', 'GSAP / Motion', 'Civil Tech', 'Lead Funnels'],
       metrics: [
-        { label: 'Projects Coordinated', value: 'Multiple Concurrent' },
-        { label: 'Client Follow-ups', value: '100% Tracked' },
-        { label: 'Reporting', value: 'Weekly MIS' },
+        { label: 'Budget Range', value: '₹15L - ₹75L Homes' },
+        { label: 'Quality Protocol', value: '5-Stage Inspection' },
+        { label: 'Client Model', value: 'NRI & Local Ready' },
       ],
-      problem: 'Scattered communication across email, chat, and spreadsheets created risk of delayed client updates and missed lead follow-ups.',
-      solution: 'Created unified project documentation SOPs, structured CRM lead pipelines, and automated status trackers that gave executive teams total visibility.',
+      problem: 'First-time home builders frequently suffer from informal contractor management, unexpected cost escalations, material wastage, and lack of verified site supervision.',
+      solution: 'Constructed a transparent digital platform highlighting engineer-supervised construction, clear itemized costing, 3D structural previews, and direct consultation booking.',
       architectureHighlights: [
-        'Standard Operating Procedures (SOPs) for requirement gathering and onboarding',
-        'Calendar management and meeting scheduling across remote team members',
-        'Advanced Excel MIS reporting with pivot tables and milestone tracking',
-        'Active client coordination ensuring timely deliverables and rapid feedback resolution',
+        'Interactive 3D structural model showcase built with Three.js / React Suspense',
+        'Dynamic magnetic CTA buttons with physics-based cursor hover physics',
+        'Interactive Before/After transformation comparison cards for residential turnkey projects',
+        'Structured lead qualification form capturing plot size, budget brackets, and location with WhatsApp automation',
       ],
       benchmarks: [
-        { name: 'SOP Adoption', score: '100%', comparison: 'Standardized company-wide documentation' },
-        { name: 'On-Time Milestone Delivery', score: '99%+', comparison: 'Zero unaccounted project slips' },
+        { name: '3D Asset Load', score: '< 1.5s', comparison: 'Progressive fallback Suspense loading' },
+        { name: 'Consultation Conversion', score: '+45%', comparison: 'Streamlined WhatsApp and form lead capture' },
       ],
+      codeSnippet: {
+        filename: 'src/components/BudgetEstimator.tsx',
+        language: 'typescript',
+        code: `export const calculateTurnkeyHomeEstimate = (
+  builtUpAreaSqFt: number,
+  packageTier: 'Budget' | 'Standard' | 'Premium'
+): ConstructionEstimate => {
+  const rateMap = { Budget: 1650, Standard: 1950, Premium: 2350 };
+  const totalCost = builtUpAreaSqFt * rateMap[packageTier];
+
+  return {
+    totalEstimatedCost: totalCost,
+    stages: [
+      { stage: '1. Excavation & Foundation', share: totalCost * 0.15 },
+      { stage: '2. RCC Plinth & Superstructure', share: totalCost * 0.35 },
+      { stage: '3. Brickwork & Plastering', share: totalCost * 0.20 },
+      { stage: '4. Electrical, Plumbing & Flooring', share: totalCost * 0.20 },
+      { stage: '5. Painting & Final Handover', share: totalCost * 0.10 },
+    ],
+  };
+};`,
+      },
       githubUrl: 'https://github.com/umardesh',
-      demoUrl: 'https://github.com/umardesh',
-      visualType: 'crdt-collab',
+      demoUrl: 'https://construction-site-ten-jade.vercel.app/',
+      visualType: 'cloud-mesh',
     },
   ] as Project[],
 
