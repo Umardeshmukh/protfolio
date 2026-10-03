@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="hero-glow" cx="50%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#7C5CFC" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#08090B" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="card-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#303540" />
+      <stop offset="50%" stop-color="#232730" />
+      <stop offset="100%" stop-color="#191C22" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9278FF" />
+      <stop offset="100%" stop-color="#7C5CFC" />
+    </linearGradient>
+    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.025)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="630" fill="#08090B" />
+  <rect width="1200" height="630" fill="url(#grid-pattern)" />
+  <rect width="1200" height="630" fill="url(#hero-glow)" />
+
+  <!-- Outer Card Frame -->
+  <rect x="60" y="50" width="1080" height="530" rx="24" fill="#0D0F12" stroke="url(#card-border)" stroke-width="1.5" />
+
+  <!-- Top Accent Dot & Eyebrow -->
+  <g transform="translate(100, 110)">
+    <circle cx="0" cy="0" r="5" fill="#4ADE80" />
+    <circle cx="0" cy="0" r="10" fill="#4ADE80" opacity="0.25" />
+    <text x="20" y="4" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="14" font-weight="600" fill="#7C5CFC" letter-spacing="2">
+      PORTFOLIO &amp; PROJECT COORDINATION
+    </text>
+  </g>
+
+  <!-- Name / Hero Display Heading -->
+  <text x="100" y="190" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="56" font-weight="700" fill="#F5F7FA" letter-spacing="-1.5">
+    Mohammed Umer Deshmukh
+  </text>
+
+  <!-- Subtitle Role -->
+  <text x="100" y="240" font-family="'Inter', -apple-system, sans-serif" font-size="24" font-weight="500" fill="#A7ADB7">
+    Frontend Developer &amp; Administrative Management Specialist
+  </text>
+
+  <!-- Bio Summary Lines -->
+  <text x="100" y="295" font-family="'Inter', -apple-system, sans-serif" font-size="18" font-weight="400" fill="#6F7682" width="880">
+    2+ years experience building responsive React.js and Tailwind CSS applications,
+  </text>
+  <text x="100" y="325" font-family="'Inter', -apple-system, sans-serif" font-size="18" font-weight="400" fill="#6F7682">
+    managing client communication, executive schedules, and cross-functional remote workflows.
+  </text>
+
+  <!-- Technology Badges / Tags -->
+  <g transform="translate(100, 380)">
+    <!-- Tag 1: React.js -->
+    <rect x="0" y="0" width="105" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="52" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">React.js</text>
+
+    <!-- Tag 2: Tailwind CSS -->
+    <rect x="120" y="0" width="125" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="182" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">Tailwind CSS</text>
+
+    <!-- Tag 3: JavaScript -->
+    <rect x="260" y="0" width="115" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="317" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">JavaScript</text>
+
+    <!-- Tag 4: Python -->
+    <rect x="390" y="0" width="95" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="437" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">Python</text>
+
+    <!-- Tag 5: Project Coordination -->
+    <rect x="500" y="0" width="180" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="590" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">Project Coordination</text>
+
+    <!-- Tag 6: Prompt Engineering -->
+    <rect x="695" y="0" width="180" height="36" rx="18" fill="#12151A" stroke="#232730" stroke-width="1" />
+    <text x="785" y="23" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#F5F7FA" text-anchor="middle">Prompt Engineering</text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="100" y1="460" x2="1040" y2="460" stroke="#191C22" stroke-width="1" />
+
+  <!-- Footer Info / Metrics -->
+  <g transform="translate(100, 510)">
+    <text x="0" y="0" font-family="'Inter', monospace" font-size="14" font-weight="500" fill="#A7ADB7">
+      📍 Aurangabad, India
+    </text>
+    <text x="210" y="0" font-family="'Inter', monospace" font-size="14" font-weight="500" fill="#A7ADB7">
+      ✉️ umardesh@gmail.com
+    </text>
+    <text x="460" y="0" font-family="'Inter', monospace" font-size="14" font-weight="500" fill="#A7ADB7">
+      💻 github.com/umardesh
+    </text>
+    <text x="710" y="0" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="600" fill="#4ADE80">
+      ● Available for Remote Roles
+    </text>
+  </g>
+</svg>

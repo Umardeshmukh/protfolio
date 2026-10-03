@@ -9,10 +9,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Track horizontal scroll progress through entire page
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        const progress = (window.scrollY / totalScroll) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, progress)));
+      } else {
+        setScrollProgress(0);
+      }
 
       const sections = ['about', 'projects', 'architecture', 'experience', 'contact'];
       const scrollPos = window.scrollY + 120;
@@ -31,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -51,7 +62,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 h-[72px] transition-all duration-300">
+    <>
+      {/* Subtle Horizontal Scroll Progress Bar at the very top of the viewport */}
+      <div
+        className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-transparent pointer-events-none"
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-gradient-to-r from-[#7C5CFC] via-[#9278FF] to-[#A996FF] transition-[width] duration-75 ease-out shadow-[0_0_8px_rgba(124,92,252,0.6)]"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      <header className="fixed top-0 left-0 right-0 z-40 h-[72px] transition-all duration-300">
       <div className="absolute inset-0 bg-[#08090B]/80 backdrop-blur-[16px] border-b border-white/[0.06]" />
 
       <div className="relative max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
@@ -173,5 +196,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </div>
       )}
     </header>
+    </>
   );
 };
