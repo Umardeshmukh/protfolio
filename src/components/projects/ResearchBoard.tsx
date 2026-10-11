@@ -90,20 +90,20 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsMouseOverBoard(true)}
         onMouseLeave={() => setIsMouseOverBoard(false)}
-        className="hidden lg:block relative w-full h-[880px] rounded-[24px] bg-[#f9f9f8] border border-black/[0.08] overflow-hidden select-none shadow-[0_16px_45px_rgba(0,0,0,0.03)]"
+        className="hidden lg:block relative w-full h-[880px] rounded-[24px] bg-[#07080b] border border-white/[0.1] overflow-hidden select-none shadow-[0_24px_70px_rgba(0,0,0,0.6)]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px)
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
         }}
       >
         {/* Subtle Linen / Atelier Micro-Texture */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-25"
+          className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
             backgroundSize: '16px 16px',
           }}
           aria-hidden="true"
@@ -111,80 +111,53 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
 
         {/* Investigative Blueprint Crosshairs & Grid Coordinate Watermarks */}
         <div
-          className="absolute inset-0 pointer-events-none z-5 overflow-hidden text-[#78716c]/60 font-mono text-[10px]"
+          className="absolute inset-0 pointer-events-none z-5 overflow-hidden text-slate-400/50 font-mono text-[10px]"
           aria-hidden="true"
         >
           {/* Top ruler marks */}
-          <div className="absolute top-3.5 left-6 flex items-center gap-2 text-[#78716c]">
-            <Compass className="w-3.5 h-3.5 text-[#b45309]" />
-            <span>ATELIER INVESTIGATION WALL // COORD [19.876°N / 75.343°E]</span>
+          <div className="absolute top-3.5 left-6 flex items-center gap-2 text-slate-300">
+            <Compass className="w-3.5 h-3.5 text-[#fbbf24]" />
+            <span>NOIR INVESTIGATION WALL // COORD [19.876°N / 75.343°E]</span>
           </div>
 
-          <div className="absolute top-3.5 right-6 flex items-center gap-2 text-[#78716c]">
-            <span className="w-2 h-2 rounded-full bg-[#c53030]" />
-            <span>ROYAL DOSSIER NETWORK</span>
+          <div className="absolute top-3.5 right-6 flex items-center gap-2 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse" />
+            <span>CLASSIFIED DOSSIER NETWORK</span>
           </div>
 
-          <div className="absolute bottom-3.5 left-6 text-[#78716c]">
-            <span>MOHAMMED UMER DESHMUKH // STICKY NOTE ARCHIVE</span>
+          <div className="absolute bottom-3.5 left-6 text-slate-400">
+            <span>MOHAMMED UMER DESHMUKH // CASE FILE ARCHIVE</span>
           </div>
 
-          <div className="absolute bottom-3.5 right-6 text-[#78716c]">
-            <span>CLICK PROJECT NAME TO OPEN INVESTIGATION DOSSIER</span>
+          <div className="absolute bottom-3.5 right-6 text-[#fbbf24] flex items-center gap-1.5 font-semibold">
+            <span>🔦 MOVE CURSOR TO ILLUMINATE DETAILS WITH SPOTLIGHT</span>
           </div>
 
           {/* Crosshairs watermark */}
-          <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-black/5 font-light">
+          <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-white/10 font-light">
             +
           </div>
-          <div className="absolute top-1/4 right-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-black/5 font-light">
+          <div className="absolute top-1/4 right-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-white/10 font-light">
             +
           </div>
-          <div className="absolute bottom-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-black/5 font-light">
+          <div className="absolute bottom-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-white/10 font-light">
             +
           </div>
-          <div className="absolute bottom-1/4 right-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-black/5 font-light">
+          <div className="absolute bottom-1/4 right-1/4 -translate-x-1/2 -translate-y-1/2 text-lg text-white/10 font-light">
             +
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-black/5 font-light">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white/10 font-light">
             +
           </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* INTERACTIVE SPOTLIGHT EFFECT                                   */}
-        {/* ============================================================== */}
-        {spotlightEnabled && (
-          <div
-            className="absolute inset-0 pointer-events-none z-15 transition-opacity duration-300"
-            style={{
-              opacity: isMouseOverBoard ? 1 : 0.65,
-              background: `
-                radial-gradient(
-                  520px circle at ${spotlightPos.x}px ${spotlightPos.y}px,
-                  rgba(217, 119, 6, 0.08) 0%,
-                  rgba(124, 58, 237, 0.05) 35%,
-                  rgba(255, 255, 255, 0.5) 65%,
-                  transparent 85%
-                ),
-                radial-gradient(
-                  220px circle at ${spotlightPos.x}px ${spotlightPos.y}px,
-                  rgba(255, 255, 255, 0.7) 0%,
-                  transparent 70%
-                )
-              `,
-            }}
-            aria-hidden="true"
-          />
-        )}
-
-        {/* Ambient Warm Pearl Backing */}
+        {/* Ambient Dark Noir Glow */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
           style={{
             background: `
-              radial-gradient(circle at 20% 25%, rgba(124, 58, 237, 0.035) 0%, transparent 45%),
-              radial-gradient(circle at 80% 75%, rgba(217, 119, 6, 0.03) 0%, transparent 45%)
+              radial-gradient(circle at 20% 25%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 75%, rgba(217, 119, 6, 0.05) 0%, transparent 50%)
             `,
           }}
           aria-hidden="true"
@@ -261,18 +234,66 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
             );
           })}
         </div>
+
+        {/* ============================================================== */}
+        {/* INTERACTIVE SPOTLIGHT FLASHLIGHT & DARK SHROUD EFFECT          */}
+        {/* ============================================================== */}
+        {spotlightEnabled && (
+          <>
+            {/* 1. Darkness Shroud: conceals details outside the spotlight cone */}
+            <div
+              className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-300"
+              style={{
+                opacity: isMouseOverBoard ? 1 : 0.85,
+                background: `
+                  radial-gradient(
+                    380px circle at ${spotlightPos.x}px ${spotlightPos.y}px,
+                    transparent 0%,
+                    transparent 42%,
+                    rgba(7, 8, 11, 0.45) 65%,
+                    rgba(7, 8, 11, 0.86) 85%,
+                    rgba(7, 8, 11, 0.95) 100%
+                  )
+                `,
+              }}
+              aria-hidden="true"
+            />
+
+            {/* 2. Spotlight Flashlight Beam: illuminates and glows over details */}
+            <div
+              className="absolute inset-0 pointer-events-none z-25 transition-opacity duration-200"
+              style={{
+                opacity: isMouseOverBoard ? 1 : 0.65,
+                background: `
+                  radial-gradient(
+                    440px circle at ${spotlightPos.x}px ${spotlightPos.y}px,
+                    rgba(251, 191, 36, 0.09) 0%,
+                    rgba(217, 119, 6, 0.04) 40%,
+                    transparent 75%
+                  ),
+                  radial-gradient(
+                    180px circle at ${spotlightPos.x}px ${spotlightPos.y}px,
+                    rgba(255, 255, 255, 0.14) 0%,
+                    transparent 80%
+                  )
+                `,
+              }}
+              aria-hidden="true"
+            />
+          </>
+        )}
       </div>
 
       {/* ============================================================== */}
       {/* TABLET & MOBILE VIEW: RESPONSIVE EVIDENCE TRAIL WITH STICKY    */}
       {/* ============================================================== */}
       <div className="lg:hidden relative space-y-8">
-        <div className="p-4 rounded-[16px] bg-white border border-black/[0.08] flex items-center justify-between text-xs font-mono shadow-sm">
-          <div className="flex items-center gap-2 text-[#475569]">
-            <span className="w-2 h-2 rounded-full bg-[#c53030] animate-pulse" />
+        <div className="p-4 rounded-[16px] bg-[#0c0e14] border border-white/[0.08] flex items-center justify-between text-xs font-mono shadow-md text-slate-300">
+          <div className="flex items-center gap-2 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse" />
             <span>INVESTIGATION LOG: {projects.length} STICKY DOSSIERS</span>
           </div>
-          <span className="text-[#b45309] font-semibold">TAP TITLE TO INSPECT</span>
+          <span className="text-[#fbbf24] font-semibold">TAP TITLE TO INSPECT</span>
         </div>
 
         {/* Vertical Evidence Trail */}
