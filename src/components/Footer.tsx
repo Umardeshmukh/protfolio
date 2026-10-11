@@ -19,9 +19,6 @@ export const Footer: React.FC = () => {
               — Frontend Developer & Project Coordinator
             </span>
           </div>
-          <p className="text-xs text-[#94a3b8]">
-            Luxury Atelier Edition. Styled with Syne, Plus Jakarta Sans, and Space Grotesk.
-          </p>
         </div>
 
         {/* Center: Clean links */}
