@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Terminal, Layers, Server, Monitor, Activity, CheckCircle, Copy, Check } from 'lucide-react';
-import { MatrixText } from './MatrixText';
-import { TorchCard } from './TorchCard';
 
 export const ArchitectureSection: React.FC = () => {
   const [selectedSkillId, setSelectedSkillId] = useState<string>(PORTFOLIO_DATA.skills[0].id);
@@ -33,17 +31,18 @@ export const ArchitectureSection: React.FC = () => {
   };
 
   return (
-    <section id="architecture" className="py-24 lg:py-36 border-t border-[#191C22] relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="architecture" className="py-28 lg:py-40 border-t border-black/[0.05] relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
-          <div className="text-[12px] uppercase tracking-[0.12em] text-[#7C5CFC] font-medium font-mono">
-            <MatrixText text="03 — ARCHITECTURE & SKILLS" trigger="view" />
+          <div className="text-[12px] uppercase tracking-[0.16em] text-[#b45309] font-semibold font-mono flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#d97706]" />
+            <span>02 — ARCHITECTURE & SKILLS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-semibold text-[#F5F7FA] leading-[1.1] tracking-[-0.03em]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.1] tracking-[-0.03em]">
             Technical Stack & Core Skills
           </h2>
-          <p className="text-base sm:text-lg text-[#A7ADB7] leading-[1.6]">
+          <p className="text-base sm:text-lg text-[#475569] leading-[1.7] font-sans">
             Versatile expertise across React.js frontend engineering, project coordination, Python data analysis, and certified Prompt Engineering.
           </p>
         </div>
@@ -58,17 +57,17 @@ export const ArchitectureSection: React.FC = () => {
                 <button
                   key={skill.id}
                   onClick={() => setSelectedSkillId(skill.id)}
-                  className={`w-full text-left p-5 rounded-[16px] border transition-all duration-200 flex items-start gap-4 ${
+                  className={`w-full text-left p-5 rounded-[18px] border transition-all duration-200 flex items-start gap-4 ${
                     isSelected
-                      ? 'bg-[#12151A] border-[#7C5CFC] shadow-[0_10px_30px_rgba(124,92,252,0.08)]'
-                      : 'bg-[#0D0F12] border-[#232730] hover:border-[#303540] hover:bg-[#0D0F12]/80'
+                      ? 'bg-white border-[#7c3aed]/50 shadow-[0_10px_30px_rgba(124,58,237,0.08)]'
+                      : 'bg-white/70 backdrop-blur-md border-black/[0.06] hover:border-black/[0.12] hover:bg-white'
                   }`}
                 >
                   <div
-                    className={`p-2.5 rounded-[10px] mt-0.5 border ${
+                    className={`p-2.5 rounded-[12px] mt-0.5 border ${
                       isSelected
-                        ? 'bg-[#7C5CFC]/15 text-[#9278FF] border-[#7C5CFC]/30'
-                        : 'bg-[#12151A] text-[#A7ADB7] border-[#232730]'
+                        ? 'bg-[#7c3aed]/10 text-[#7c3aed] border-[#7c3aed]/25'
+                        : 'bg-[#f8fafc] text-[#64748b] border-black/[0.06]'
                     }`}
                   >
                     {getIcon(skill.id)}
@@ -78,16 +77,16 @@ export const ArchitectureSection: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <h3
                         className={`text-base font-semibold ${
-                          isSelected ? 'text-[#F5F7FA]' : 'text-[#A7ADB7]'
+                          isSelected ? 'text-[#0f172a]' : 'text-[#475569]'
                         }`}
                       >
                         {skill.title}
                       </h3>
                       {isSelected && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFC]" />
+                        <span className="w-2 h-2 rounded-full bg-[#7c3aed]" />
                       )}
                     </div>
-                    <p className="text-xs text-[#6F7682] leading-relaxed line-clamp-2">
+                    <p className="text-xs text-[#64748b] leading-relaxed line-clamp-2 font-sans">
                       {skill.description}
                     </p>
                   </div>
@@ -96,54 +95,44 @@ export const ArchitectureSection: React.FC = () => {
             })}
           </div>
 
-          {/* Interactive Inspection Details Container with Torch Effect */}
-          <TorchCard
-            className="lg:col-span-7 p-6 lg:p-8 space-y-6"
-            torchColor="rgba(124, 92, 252, 0.15)"
-            borderGlowColor="rgba(146, 120, 255, 0.45)"
-            torchRadius={380}
-          >
-            <div className="flex items-center justify-between border-b border-[#191C22] pb-4">
-              <div>
-                <span className="text-xs font-mono text-[#7C5CFC] uppercase tracking-wider">
+          {/* Interactive Inspection Details Container */}
+          <div className="lg:col-span-7 p-7 lg:p-9 rounded-[22px] bg-white border border-black/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.03)] space-y-6">
+            <div className="flex items-start sm:items-center justify-between gap-3 flex-wrap border-b border-black/[0.06] pb-4">
+              <div className="min-w-0">
+                <span className="text-xs font-mono text-[#b45309] uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
                   Pattern Signature
                 </span>
-                <h4 className="text-lg font-display font-semibold text-[#F5F7FA] mt-0.5">
-                  <MatrixText
-                    key={activeSkill.patternName}
-                    text={activeSkill.patternName}
-                    trigger="mount"
-                    revealSpeed={0.5}
-                    scrambleClassName="text-[#A996FF]"
-                  />
+                <h4 className="text-lg font-display font-bold text-[#0f172a] mt-0.5">
+                  {activeSkill.patternName}
                 </h4>
               </div>
 
-              <div className="flex items-center gap-1.5 text-xs font-mono text-[#4ADE80]">
+              <div className="flex items-center gap-1.5 text-xs font-mono text-[#15803d] px-3 py-1 rounded-full bg-[#16a34a]/10 border border-[#16a34a]/25">
                 <CheckCircle className="w-3.5 h-3.5" />
                 <span>Verified Pattern</span>
               </div>
             </div>
 
-            <p className="text-sm text-[#A7ADB7] leading-relaxed">
+            <p className="text-sm text-[#475569] leading-relaxed font-sans">
               {activeSkill.patternDescription}
             </p>
 
             {/* Code / Configuration Snippet */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono text-[#6F7682]">
-                <span className="flex items-center gap-1 text-[#A7ADB7]">
-                  <Terminal className="w-3.5 h-3.5 text-[#7C5CFC]" />
+              <div className="flex items-center justify-between text-xs font-mono text-[#64748b]">
+                <span className="flex items-center gap-1.5 text-[#0f172a]">
+                  <Terminal className="w-3.5 h-3.5 text-[#7c3aed]" />
                   <span>Pattern Implementation Snippet</span>
                 </span>
                 <button
                   onClick={handleCopyCode}
-                  className="flex items-center gap-1 text-[#A7ADB7] hover:text-[#F5F7FA] transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-[8px] bg-[#f8fafc] border border-black/[0.08] text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3 h-3 text-[#4ADE80]" />
-                      <span className="text-[#4ADE80]">Copied</span>
+                      <Check className="w-3 h-3 text-[#16a34a]" />
+                      <span className="text-[#16a34a]">Copied</span>
                     </>
                   ) : (
                     <>
@@ -154,28 +143,28 @@ export const ArchitectureSection: React.FC = () => {
                 </button>
               </div>
 
-              <pre className="p-4 rounded-[10px] bg-[#08090B] border border-[#232730] font-mono text-xs text-[#A7ADB7] overflow-x-auto leading-relaxed">
+              <pre className="p-4 rounded-[14px] bg-[#f1f5f9] border border-black/[0.06] font-mono text-xs text-[#334155] overflow-x-auto leading-relaxed shadow-inner">
                 <code>{activeSkill.sampleCode}</code>
               </pre>
             </div>
 
             {/* Tech Stack Pills */}
             <div className="space-y-3 pt-2">
-              <div className="text-xs font-medium text-[#6F7682] uppercase tracking-wider">
+              <div className="text-xs font-mono text-[#64748b] uppercase tracking-wider font-semibold">
                 Production Tooling & Core Primitives
               </div>
               <div className="flex flex-wrap gap-2">
                 {activeSkill.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-[#12151A] border border-[#232730] text-[#A7ADB7] rounded-full px-[10px] py-[6px] text-xs font-medium transition-colors hover:border-[#7C5CFC] hover:text-[#F5F7FA]"
+                    className="bg-white border border-black/[0.08] text-[#475569] rounded-full px-3.5 py-1 text-xs font-mono font-medium transition-all hover:border-[#7c3aed] hover:text-[#7c3aed] shadow-sm"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
-          </TorchCard>
+          </div>
         </div>
       </div>
     </section>

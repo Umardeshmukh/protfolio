@@ -1,50 +1,69 @@
-import React, { useState } from 'react';
-import { ArrowRight, FileText, CheckCircle2, MapPin, Mail, Phone, Code2, Briefcase, User } from 'lucide-react';
+import React, { useRef, useState, useCallback } from 'react';
+import { ArrowRight, FileText, CheckCircle2, Code2, Sparkles, MapPin } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { MatrixText } from './MatrixText';
 
 interface HeroProps {
   onOpenResume: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
-  const [imageError, setImageError] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Calculate subtle 3D rotational tilt (-6deg to +6deg)
+    const rotateX = ((centerY - y) / centerY) * 6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+
+    setTilt({ rotateX, rotateY });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+    setTilt({ rotateX: 0, rotateY: 0 });
+  }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-[90px] pb-16 lg:py-24 bg-hero-glow bg-grid-pattern overflow-hidden">
-      {/* Background subtle radial gradient */}
+    <section className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-grid-pattern overflow-hidden">
+      {/* Background Soft Royal Ambient Luminous Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-12 left-1/4 w-96 h-96 bg-[#7C5CFC]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-10 left-1/4 w-[520px] h-[520px] bg-[#7c3aed]/[0.045] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-8 right-1/4 w-[480px] h-[480px] bg-[#d97706]/[0.035] rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/3 w-[380px] h-[380px] bg-[#0ea5e9]/[0.03] rounded-full blur-[130px] pointer-events-none" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
-          {/* Main Editorial Hero Column */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Status / Availability Indicator */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#12151A] border border-[#232730] text-xs text-[#A7ADB7]">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+          {/* Left Column: Main Editorial Hero with Generous Whitespace */}
+          <div className="lg:col-span-7 space-y-8">
+            {/* Availability Indicator - Minimal Luxury Pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:border-black/[0.15] transition-colors">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ADE80] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ADE80]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d97706] opacity-60" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d97706]" />
               </span>
-              <MatrixText text={PORTFOLIO_DATA.personal.status} trigger="both" revealSpeed={0.4} />
+              <span className="tracking-wide">{PORTFOLIO_DATA.personal.status}</span>
             </div>
 
-            {/* Main Display Heading (Space Grotesk, 72px scale, controlled accent) */}
-            <h1 className="text-[42px] sm:text-[56px] lg:text-[66px] xl:text-[72px] font-display font-semibold text-[#F5F7FA] tracking-[-0.04em] leading-[1.05] sm:leading-[1.0] text-balance">
+            {/* Display Heading: High-fashion, authoritative typography */}
+            <h1 className="text-[44px] sm:text-[58px] lg:text-[68px] xl:text-[76px] font-display font-extrabold text-[#0f172a] tracking-[-0.035em] leading-[1.05] sm:leading-[1.0] text-balance">
               Building{' '}
-              <MatrixText
-                text="responsive web apps"
-                trigger="view"
-                scrambleClassName="text-[#A996FF]"
-                className="text-[#7C5CFC]"
-                revealSpeed={0.35}
-              />{' '}
+              <span className="text-gradient-amber">
+                responsive web apps
+              </span>{' '}
               & orchestrating client success.
             </h1>
 
-            {/* Body Large Description (18px, 1.7 line-height) */}
-            <p className="text-base sm:text-lg lg:text-[18px] text-[#A7ADB7] leading-[1.7] max-w-2xl font-normal">
+            {/* Body Description with Generous Leading */}
+            <p className="text-base sm:text-lg lg:text-[19px] text-[#475569] leading-[1.75] max-w-2xl font-normal font-sans">
               Frontend Developer & Project Coordinator with 2+ years of experience delivering responsive React.js and Tailwind CSS applications, managing client communications, executive calendars, and remote cross-functional workflows.
             </p>
 
@@ -52,36 +71,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-[10px] bg-[#7C5CFC] px-5 py-3 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#9278FF]"
+                className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(15,23,42,0.15)]"
               >
                 <span>View Projects</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2 stroke-[2.5]" />
               </a>
 
               <a
                 href="#about"
-                className="inline-flex items-center justify-center rounded-[10px] border border-[#303540] bg-transparent px-5 py-3 text-sm font-medium text-[#F5F7FA] transition-all duration-200 hover:bg-[#12151A] hover:border-[#454B55]"
+                className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
               >
                 <span>About & Core Skills</span>
               </a>
 
               <button
                 onClick={onOpenResume}
-                className="text-sm font-medium text-[#A7ADB7] hover:text-[#F5F7FA] transition-colors duration-200 px-2 py-3 inline-flex items-center gap-1.5"
+                className="text-sm font-medium text-[#64748b] hover:text-[#0f172a] transition-colors duration-200 px-3 py-3 inline-flex items-center gap-1.5 font-sans"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-4 h-4 text-[#b45309]" />
                 <span>Read Curriculum Vitae →</span>
               </button>
             </div>
 
-            {/* Proof Metrics Strip */}
-            <div className="pt-8 border-t border-[#191C22] grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {/* Proof Metrics Strip with Luxury White Cards */}
+            <div className="pt-8 border-t border-black/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
               {PORTFOLIO_DATA.metrics.map((m, idx) => (
-                <div key={idx} className="space-y-0.5">
-                  <div className="font-display font-semibold text-xl sm:text-2xl text-[#F5F7FA] tabular-nums tracking-tight">
-                    {m.value}
+                <div
+                  key={idx}
+                  className="p-4 rounded-[14px] bg-white border border-black/[0.06] space-y-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-black/[0.12] transition-colors"
+                >
+                  <div className="font-display font-bold text-xl sm:text-2xl text-[#0f172a] tabular-nums tracking-tight flex items-baseline gap-1">
+                    <span>{m.value}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
                   </div>
-                  <div className="text-xs text-[#6F7682] leading-tight">
+                  <div className="text-[11px] font-mono text-[#64748b] leading-tight">
                     {m.label}
                   </div>
                 </div>
@@ -89,106 +112,87 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
           </div>
 
-          {/* Right Column: Hero Portrait Blended into the Dark Visual System */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[420px] group">
-              {/* Dual-layer ambient purple/indigo glow backlights behind the portrait */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-[#7C5CFC]/30 via-[#4F46E5]/20 to-[#2563EB]/10 rounded-[30px] blur-3xl opacity-70 group-hover:opacity-100 group-hover:blur-2xl transition-all duration-700 pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#7C5CFC]/15 rounded-full blur-[80px] pointer-events-none" />
+          {/* Right Column: Animated Hero Image Showcase */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+            <div
+              ref={cardRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={handleMouseLeave}
+              className="relative w-full max-w-[460px] group cursor-pointer"
+              style={{ perspective: '1000px' }}
+            >
+              {/* Soft Luminous Aura behind artwork */}
+              <div className="absolute -inset-6 bg-gradient-to-tr from-[#7c3aed]/15 via-[#f59e0b]/10 to-[#0ea5e9]/10 rounded-full blur-3xl opacity-60 group-hover:opacity-85 transition-all duration-700 animate-hero-glow pointer-events-none" />
 
-              {/* Portrait Container with dark border & technical surface */}
-              <div className="relative rounded-[24px] bg-[#0D0F12] border border-[#232730] p-3 sm:p-4 overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-[#303540] hover:shadow-[0_24px_80px_rgba(124,92,252,0.14)]">
-                
-                {/* HUD Corner Reticles for High-Tech Aesthetic */}
-                <div className="absolute top-2.5 left-2.5 w-3 h-3 border-t-2 border-l-2 border-[#7C5CFC]/60 rounded-tl pointer-events-none z-20" />
-                <div className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-[#7C5CFC]/60 rounded-tr pointer-events-none z-20" />
-                <div className="absolute bottom-2.5 left-2.5 w-3 h-3 border-b-2 border-l-2 border-[#7C5CFC]/60 rounded-bl pointer-events-none z-20" />
-                <div className="absolute bottom-2.5 right-2.5 w-3 h-3 border-b-2 border-r-2 border-[#7C5CFC]/60 rounded-br pointer-events-none z-20" />
+              {/* Floating Animated Image Showcase Container */}
+              <div
+                className="relative transition-all duration-300 ease-out animate-hero-levitate"
+                style={{
+                  transform: isHovered
+                    ? `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale3d(1.02, 1.02, 1.02)`
+                    : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+                  transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
+                }}
+              >
+                {/* Floating Badge 1: Top-Left Availability */}
+                <div className="absolute -top-3 left-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-xs font-mono text-[#0f172a] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-1 z-20">
+                  <span className="w-2 h-2 rounded-full bg-[#d97706] animate-pulse" />
+                  <span>Available for Remote Roles</span>
+                </div>
 
-                {/* Image Frame with gradient blend overlays */}
-                <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden bg-[#08090B]">
-                  {!imageError ? (
-                    <img
-                      src="/heroimg.jpg"
-                      alt="Mohammed Umer Deshmukh - Frontend Developer & Project Coordinator"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover object-[center_14%] filter contrast-[1.08] brightness-[0.98] saturate-[1.05] transition-all duration-700 ease-out group-hover:scale-[1.03]"
-                      onError={() => setImageError(true)}
-                    />
-                  ) : (
-                    /* Stylized fallback portrait container if image fails to load */
-                    <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#12151A] via-[#0D0F12] to-[#08090B] text-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
-                      <div className="w-24 h-24 rounded-full bg-[#171A20] border-2 border-[#7C5CFC] flex items-center justify-center text-[#7C5CFC] mb-4 shadow-[0_0_30px_rgba(124,92,252,0.3)]">
-                        <span className="font-display font-bold text-3xl text-[#F5F7FA]">MD</span>
-                      </div>
-                      <h3 className="font-display font-semibold text-lg text-[#F5F7FA]">
-                        Mohammed Umer Deshmukh
-                      </h3>
-                      <p className="text-xs text-[#7C5CFC] font-mono mt-1">
-                        Frontend Developer & Project Coordinator
-                      </p>
-                      <p className="text-xs text-[#A7ADB7] mt-3 max-w-[260px] leading-relaxed">
-                        2+ years experience in React.js, Tailwind CSS, Python & Administrative Management
-                      </p>
-                    </div>
-                  )}
+                {/* Floating Badge 2: Top-Right Tech Stack */}
+                <div className="absolute -top-3 right-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-2 z-20 hover:text-[#0f172a] transition-colors">
+                  <Code2 className="w-3.5 h-3.5 text-[#7c3aed]" />
+                  <span>React · TS · Admin</span>
+                </div>
 
-                  {/* Seamless gradient blending overlays that integrate the photo into the dark palette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-[#08090B]/30 to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#08090B]/40 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#08090B] via-[#08090B]/85 to-transparent pointer-events-none" />
+                {/* The Clean Hero Image */}
+                <div className="relative rounded-[26px] overflow-hidden drop-shadow-[0_16px_36px_rgba(0,0,0,0.1)] bg-white/40">
+                  <img
+                    src="/hero.png"
+                    alt="Mohammed Umer Deshmukh - Frontend Developer & Project Coordinator"
+                    className="w-full h-auto object-contain filter contrast-[1.02] brightness-[1.0] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
 
-                  {/* Top Floating Glass Badges */}
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#08090B]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#F5F7FA] shadow-md">
-                      <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse" />
-                      <MatrixText text="Available for Hire" trigger="hover" />
-                    </div>
-
-                    <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#08090B]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#A7ADB7] shadow-md cursor-pointer hover:border-[#7C5CFC]/50 transition-colors">
-                      <Code2 className="w-3 h-3 text-[#7C5CFC]" />
-                      <MatrixText text="React · TS" trigger="hover" />
-                    </div>
+                {/* Identity & Verification Bar (Clean luxury paper card) */}
+                <div className="mt-3.5 p-4 rounded-[16px] bg-white border border-black/[0.07] space-y-2 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-display font-bold text-[#0f172a] text-[14px] tracking-tight flex items-center gap-1.5">
+                      Mohammed Umer Deshmukh
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a]" />
+                    </span>
+                    <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[#16a34a]/10 text-[#15803d] border border-[#16a34a]/25 font-semibold">
+                      Verified
+                    </span>
                   </div>
 
-                  {/* Floating Bottom Glass Card Overlaid on Image */}
-                  <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-[14px] bg-[#0D0F12]/85 backdrop-blur-md border border-[#232730] space-y-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-display font-semibold text-[#F5F7FA] text-[13px] tracking-tight flex items-center gap-1.5">
-                        <MatrixText text="Mohammed Umer Deshmukh" trigger="hover" revealSpeed={0.4} />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#7C5CFC]" />
-                      </span>
-                      <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#4ADE80]/10 text-[#4ADE80] border border-[#4ADE80]/20 font-medium">
-                        Active
-                      </span>
-                    </div>
+                  <p className="text-xs text-[#64748b] leading-tight font-sans">
+                    Frontend Developer & Project Coordinator
+                  </p>
 
-                    <p className="text-[11px] text-[#A7ADB7] leading-tight">
-                      <MatrixText text="Frontend Developer & Project Coordinator · iTUX Tech" trigger="hover" revealSpeed={0.4} />
-                    </p>
-
-                    <div className="pt-1 border-t border-[#191C22] flex items-center justify-between text-[10px] font-mono text-[#6F7682]">
-                      <span className="flex items-center gap-1 text-[#A7ADB7]">
-                        <span className="text-[#7C5CFC]">📍</span>
-                        <span>Aurangabad, IN</span>
-                      </span>
-                      <span className="text-[#A7ADB7]">
-                        2+ Yrs Experience
-                      </span>
-                    </div>
+                  <div className="pt-2 border-t border-black/[0.05] flex items-center justify-between text-[11px] font-mono">
+                    <span className="flex items-center gap-1 text-[#64748b]">
+                      <MapPin className="w-3.5 h-3.5 text-[#d97706]" />
+                      <span>Aurangabad, India</span>
+                    </span>
+                    <span className="text-[#0f172a] font-medium flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-[#7c3aed]" />
+                      <span>2+ Yrs Experience</span>
+                    </span>
                   </div>
                 </div>
 
-                {/* Under-Card Quick Highlights Strip */}
-                <div className="mt-3 px-1.5 flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-1.5 text-[#A7ADB7]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFC]" />
+                {/* Under-Card Highlights Strip */}
+                <div className="mt-2.5 px-2 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-1.5 text-[#64748b]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#7c3aed]" />
                     <span>B.Tech CS (2024)</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[#4ADE80]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80] animate-pulse" />
-                    <span>100% Delivery Rate</span>
+                  <div className="flex items-center gap-1.5 text-[#0f172a]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#d97706] animate-pulse" />
+                    <span>100% On-Time Delivery</span>
                   </div>
                 </div>
               </div>

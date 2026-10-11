@@ -9,15 +9,13 @@ export interface TorchCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TorchCard: Confined cursor hover flashlight / torch effect.
- * Illuminates the dark card surface, lights up subtle technical micro-grid dots,
- * and casts an illuminated glow on the card border nearest to the cursor.
+ * TorchCard: Confined cursor hover flashlight effect in Luxury Light mode.
  */
 export const TorchCard: React.FC<TorchCardProps> = ({
   children,
   className = '',
-  torchColor = 'rgba(124, 92, 252, 0.14)',
-  borderGlowColor = 'rgba(146, 120, 255, 0.45)',
+  torchColor = 'rgba(124, 58, 237, 0.04)',
+  borderGlowColor = 'rgba(124, 58, 237, 0.25)',
   torchRadius = 320,
   showSubgrid = true,
   onMouseMove,
@@ -74,7 +72,7 @@ export const TorchCard: React.FC<TorchCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`group/torch relative rounded-[16px] bg-[#0D0F12] border border-[#232730] overflow-hidden transition-all duration-300 hover:border-[#303540] hover:shadow-[0_20px_60px_rgba(124,92,252,0.08)] ${className}`.trim()}
+      className={`group/torch relative rounded-[20px] bg-white border border-black/[0.08] overflow-hidden transition-all duration-300 hover:border-[#7c3aed]/35 hover:shadow-[0_16px_40px_-10px_rgba(124,58,237,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.02)] ${className}`.trim()}
       style={
         {
           '--torch-x': '150px',
@@ -88,7 +86,7 @@ export const TorchCard: React.FC<TorchCardProps> = ({
       }
       {...rest}
     >
-      {/* 1. Dynamic Torch Border Highlight (illuminates border nearest to cursor) */}
+      {/* 1. Dynamic Torch Border Highlight */}
       <div
         className="absolute -inset-px rounded-[inherit] pointer-events-none transition-opacity duration-300 z-20"
         style={{
@@ -113,14 +111,14 @@ export const TorchCard: React.FC<TorchCardProps> = ({
         aria-hidden="true"
       />
 
-      {/* 3. High-Tech Dot Subgrid revealed under the Torch Beam */}
+      {/* 3. Subtle Dot Subgrid under the Torch Beam */}
       {showSubgrid && (
         <div
           className="absolute inset-0 rounded-[inherit] pointer-events-none transition-opacity duration-300 z-10 opacity-30"
           style={{
-            opacity: 'calc(var(--torch-opacity) * 0.45)',
-            backgroundImage: `radial-gradient(rgba(146, 120, 255, 0.7) 1px, transparent 1px)`,
-            backgroundSize: '16px 16px',
+            opacity: 'calc(var(--torch-opacity) * 0.35)',
+            backgroundImage: `radial-gradient(rgba(124, 58, 237, 0.4) 1px, transparent 1px)`,
+            backgroundSize: '18px 18px',
             maskImage: `radial-gradient(calc(var(--torch-radius) * 0.75) circle at var(--torch-x) var(--torch-y), black, transparent 80%)`,
             WebkitMaskImage: `radial-gradient(calc(var(--torch-radius) * 0.75) circle at var(--torch-x) var(--torch-y), black, transparent 80%)`,
           }}
@@ -129,7 +127,7 @@ export const TorchCard: React.FC<TorchCardProps> = ({
       )}
 
       {/* 4. Child Content */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between">
+      <div className="relative z-20 w-full h-full flex flex-col justify-between">
         {children}
       </div>
     </div>
