@@ -6,7 +6,7 @@ export interface EvidenceNote {
   title: string;
   codeName: string;
   content: string;
-  stamp: 'CONFIDENTIAL' | 'VERIFIED EXHIBIT' | 'FIELD TELEMETRY' | 'ARCHITECTURAL PROOF';
+  stamp: string;
   tags: string[];
   rotation: number; // degrees
   // Default desktop position percentages (0 - 100)

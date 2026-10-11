@@ -62,7 +62,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
     >
       {/* Subtle background ambient glow */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-gradient-to-b from-[#7c3aed]/[0.03] via-[#d97706]/[0.02] to-transparent blur-[150px] pointer-events-none -z-10"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-gradient-to-b from-[#b45309]/[0.02] via-[#d97706]/[0.02] to-transparent blur-[150px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 
@@ -88,7 +88,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               <p className="text-base sm:text-lg text-[#475569] leading-[1.7]">
                 A closer look at the ideas, systems and experiments I've been building.
               </p>
-              <span className="font-handwriting text-lg text-[#7c3aed] font-semibold -rotate-1 hidden sm:inline-block">
+              <span className="font-handwriting text-lg text-[#b45309] font-semibold -rotate-1 hidden sm:inline-block">
                 ~ handwritten case files & research wall ~
               </span>
             </div>
@@ -97,7 +97,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
           {/* Dynamic Case Status Indicator */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <div className="px-4 py-2 rounded-[12px] bg-white border border-black/[0.08] flex items-center gap-2.5 text-xs font-mono shadow-sm">
-              <FolderKanban className="w-4 h-4 text-[#7c3aed]" />
+              <FolderKanban className="w-4 h-4 text-[#b45309]" />
               <span className="text-[#64748b]">STATUS:</span>
               <span className="text-[#0f172a] font-bold">CASE FILES: {caseCountFormatted}</span>
             </div>

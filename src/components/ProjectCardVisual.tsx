@@ -214,7 +214,7 @@ export const ProjectCardVisual: React.FC<ProjectCardVisualProps> = ({ type }) =>
     );
   }
 
-  // 4. MahaBuild Engineers (Civil Construction & Budget Management)
+  // 4. Construction Site (Developer Projects & Lead Generation)
   return (
     <div className="relative w-full h-full bg-[#0c0e17] flex flex-col justify-between p-3.5 sm:p-4 overflow-hidden select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.12),transparent_65%)] pointer-events-none" />
@@ -223,12 +223,12 @@ export const ProjectCardVisual: React.FC<ProjectCardVisualProps> = ({ type }) =>
       <div className="relative z-10 flex items-center justify-between gap-2 border-b border-white/[0.08] pb-2 text-[10px] sm:text-[11px] font-mono text-[#94a3b8]">
         <div className="flex items-center gap-1.5 text-[#f1f5f9] min-w-0">
           <Home className="w-3.5 h-3.5 text-[#f59e0b] shrink-0" />
-          <span className="font-semibold truncate">MAHABUILD CIVIL 3D</span>
+          <span className="font-semibold truncate">CONSTRUCTION SITE</span>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
-          <span className="text-[#fbbf24] whitespace-nowrap">ENGINEER-LED</span>
+          <span className="text-[#fbbf24] whitespace-nowrap">DEVELOPER SHOWCASE</span>
           <span className="text-[#64748b] hidden sm:inline">|</span>
-          <span className="text-[#d97706] hidden sm:inline whitespace-nowrap">₹15L – ₹75L</span>
+          <span className="text-[#d97706] hidden sm:inline whitespace-nowrap">LEAD ENGINE</span>
         </div>
       </div>
 

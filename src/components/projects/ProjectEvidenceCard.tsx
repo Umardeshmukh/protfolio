@@ -88,7 +88,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
           <div
             className={`relative w-4.5 h-4.5 rounded-full border border-white/50 shadow-[0_2px_8px_rgba(0,0,0,0.6)] flex items-center justify-center transition-all ${
               isHighlighted
-                ? 'bg-gradient-to-br from-[#a78bfa] via-[#7c5cfc] to-[#4c1d95] ring-2 ring-[#7c5cfc]'
+                ? 'bg-gradient-to-br from-[#f59e0b] via-[#b45309] to-[#78350f] ring-2 ring-[#b45309]'
                 : 'bg-gradient-to-br from-[#ff6b7a] via-[#d85b68] to-[#8b1e2a]'
             }`}
           >
@@ -101,7 +101,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
       <div
         className={`relative rounded-[16px] bg-[#0d0f14]/95 backdrop-blur-xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
           isHighlighted
-            ? 'border-[#7c5cfc] shadow-[0_20px_50px_rgba(124,92,252,0.18),0_0_0_1px_rgba(124,92,252,0.4)]'
+            ? 'border-[#b45309] shadow-[0_20px_50px_rgba(124,92,252,0.18),0_0_0_1px_rgba(124,92,252,0.4)]'
             : 'border-[#232730] hover:border-[#383d4c] shadow-[0_12px_36px_rgba(0,0,0,0.45)]'
         }`}
       >
@@ -113,7 +113,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
               CASE #{String(caseNumber).padStart(2, '0')}
             </span>
             <span className="text-[#454b55]">|</span>
-            <span className="text-[#7c5cfc] font-medium text-[11px] truncate max-w-[120px]">
+            <span className="text-[#b45309] font-medium text-[11px] truncate max-w-[120px]">
               {project.category}
             </span>
           </div>
@@ -126,7 +126,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
 
         {/* Visual Slot: Photographic Evidence Container */}
         <div className="p-3.5 pb-2">
-          <div className="relative aspect-[16/10] w-full rounded-[10px] overflow-hidden border border-[#232730] bg-[#08090b] shadow-inner group-hover/card:border-[#7c5cfc]/50 transition-colors">
+          <div className="relative aspect-[16/10] w-full rounded-[10px] overflow-hidden border border-[#232730] bg-[#08090b] shadow-inner group-hover/card:border-[#b45309]/50 transition-colors">
             <div className="w-full h-full transition-transform duration-500 ease-out group-hover/card:scale-[1.03]">
               <ProjectCardVisual type={project.visualType} title={project.title} />
             </div>
@@ -144,7 +144,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
               <div className="absolute bottom-2 right-2 pointer-events-none">
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#12151d]/90 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#f5f7fa] shadow-md">
                   <span className="text-[#a7adb7] text-[10px]">{project.metrics[0].label}:</span>
-                  <span className="text-[#7c5cfc] font-bold">{project.metrics[0].value}</span>
+                  <span className="text-[#b45309] font-bold">{project.metrics[0].value}</span>
                 </span>
               </div>
             )}
@@ -167,7 +167,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
             {project.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#171a22] border border-[#232730] text-[11px] font-mono text-[#a7adb7] hover:border-[#7c5cfc]/60 hover:text-[#f5f7fa] transition-colors"
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#171a22] border border-[#232730] text-[11px] font-mono text-[#a7adb7] hover:border-[#b45309]/60 hover:text-[#f5f7fa] transition-colors"
               >
                 {tag}
               </span>
@@ -180,7 +180,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
           </div>
 
           {/* Hover Clue Indicator */}
-          <div className="pt-1 text-[11px] font-mono text-[#7c5cfc] flex items-center justify-between">
+          <div className="pt-1 text-[11px] font-mono text-[#b45309] flex items-center justify-between">
             <span className="opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center gap-1">
               <span>Inspect full investigation dossier</span>
               <ArrowRight className="w-3 h-3" />
@@ -200,10 +200,10 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-mono text-[#a7adb7] hover:text-[#7c5cfc] transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-mono text-[#a7adb7] hover:text-[#b45309] transition-colors"
                 title="Open Live Demonstration"
               >
-                <ExternalLink className="w-3.5 h-3.5 text-[#7c5cfc]" />
+                <ExternalLink className="w-3.5 h-3.5 text-[#b45309]" />
                 <span className="hidden sm:inline">Live Demo</span>
               </a>
             )}
@@ -217,9 +217,9 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
                 onSelect(project);
               }
             }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-[#7c5cfc]/15 hover:bg-[#7c5cfc] border border-[#7c5cfc]/40 hover:border-[#7c5cfc] text-xs font-medium text-[#f5f7fa] transition-all duration-200 group/btn shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-[#b45309]/15 hover:bg-[#b45309] border border-[#b45309]/40 hover:border-[#b45309] text-xs font-medium text-[#f5f7fa] transition-all duration-200 group/btn shadow-sm"
           >
-            <FolderOpen className="w-3.5 h-3.5 text-[#7c5cfc] group-hover/btn:text-white" />
+            <FolderOpen className="w-3.5 h-3.5 text-[#b45309] group-hover/btn:text-white" />
             <span>Case File</span>
             <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5" />
           </button>

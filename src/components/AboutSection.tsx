@@ -43,7 +43,7 @@ export const AboutSection: React.FC = () => {
                   <span>Aurangabad, India</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#64748b]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7c3aed]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#b45309]" />
                   <span>2+ Years Experience</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#64748b]">
@@ -56,7 +56,7 @@ export const AboutSection: React.FC = () => {
             {/* Invariants Bar - Luxury Crystal Card */}
             <div className="p-6 rounded-[20px] bg-white border border-black/[0.06] shadow-[0_2px_16px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="p-3 rounded-[14px] bg-[#7c3aed]/10 text-[#7c3aed] border border-[#7c3aed]/20">
+                <div className="p-3 rounded-[14px] bg-[#b45309]/10 text-[#b45309] border border-[#b45309]/20">
                   <Terminal className="w-5 h-5" />
                 </div>
                 <div>
@@ -67,7 +67,7 @@ export const AboutSection: React.FC = () => {
 
               <a
                 href="#projects"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0f172a] hover:text-[#7c3aed] transition-colors whitespace-nowrap font-sans"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0f172a] hover:text-[#b45309] transition-colors whitespace-nowrap font-sans"
               >
                 <span>Inspect Projects</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -88,7 +88,7 @@ export const AboutSection: React.FC = () => {
                     ETHOS {ethos.number}
                   </span>
                   {index === 0 && <ShieldCheck className="w-4 h-4 text-[#d97706]" />}
-                  {index === 1 && <Zap className="w-4 h-4 text-[#7c3aed]" />}
+                  {index === 1 && <Zap className="w-4 h-4 text-[#b45309]" />}
                   {index === 2 && <Cpu className="w-4 h-4 text-[#0284c7]" />}
                 </div>
                 <h4 className="text-base sm:text-lg font-display font-bold text-[#0f172a] mb-2 tracking-tight">

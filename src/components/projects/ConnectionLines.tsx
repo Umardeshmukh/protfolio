@@ -143,22 +143,22 @@ export const ConnectionLines: React.FC<ConnectionLinesProps> = ({
         <filter id="string-glow-red" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#ff6b7a" floodOpacity="0.85" />
         </filter>
-        <filter id="string-glow-violet" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#a78bfa" floodOpacity="0.85" />
+        <filter id="string-glow-amber" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#f59e0b" floodOpacity="0.85" />
         </filter>
       </defs>
 
       {paths.map((p) => {
-        const isViolet = p.color.toLowerCase().includes('7c5cfc');
+        const isAmber = p.color.toLowerCase().includes('d97706') || p.color.toLowerCase().includes('b45309');
         const filter = p.isHighlighted
-          ? isViolet
-            ? 'url(#string-glow-violet)'
+          ? isAmber
+            ? 'url(#string-glow-amber)'
             : 'url(#string-glow-red)'
           : undefined;
 
         const strokeColor = p.isHighlighted
-          ? isViolet
-            ? '#a78bfa'
+          ? isAmber
+            ? '#fbbf24'
             : '#ff6b7a'
           : p.color;
 

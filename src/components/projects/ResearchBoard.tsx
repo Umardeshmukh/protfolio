@@ -272,13 +272,13 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
             <span className="w-2 h-2 rounded-full bg-[#c53030] animate-pulse" />
             <span>INVESTIGATION LOG: {projects.length} STICKY DOSSIERS</span>
           </div>
-          <span className="text-[#7c3aed] font-semibold">TAP TITLE TO INSPECT</span>
+          <span className="text-[#b45309] font-semibold">TAP TITLE TO INSPECT</span>
         </div>
 
         {/* Vertical Evidence Trail */}
         <div className="relative pl-6 sm:pl-8 space-y-8">
           <div
-            className="absolute left-2.5 sm:left-3 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#c53030] via-[#7c3aed] to-[#c53030]"
+            className="absolute left-2.5 sm:left-3 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#c53030] via-[#d97706] to-[#c53030]"
             aria-hidden="true"
           />
 
@@ -352,7 +352,7 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
                     <button
                       type="button"
                       onClick={() => onSelectProject(project)}
-                      className="font-bold text-[#7c3aed] underline"
+                      className="font-bold text-[#b45309] underline hover:text-[#0f172a] transition-colors"
                     >
                       Open Case File Details →
                     </button>

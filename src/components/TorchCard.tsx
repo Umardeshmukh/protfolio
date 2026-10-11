@@ -14,8 +14,8 @@ export interface TorchCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const TorchCard: React.FC<TorchCardProps> = ({
   children,
   className = '',
-  torchColor = 'rgba(124, 58, 237, 0.04)',
-  borderGlowColor = 'rgba(124, 58, 237, 0.25)',
+  torchColor = 'rgba(217, 119, 6, 0.035)',
+  borderGlowColor = 'rgba(217, 119, 6, 0.2)',
   torchRadius = 320,
   showSubgrid = true,
   onMouseMove,
@@ -72,7 +72,7 @@ export const TorchCard: React.FC<TorchCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`group/torch relative rounded-[20px] bg-white border border-black/[0.08] overflow-hidden transition-all duration-300 hover:border-[#7c3aed]/35 hover:shadow-[0_16px_40px_-10px_rgba(124,58,237,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.02)] ${className}`.trim()}
+      className={`group/torch relative rounded-[20px] bg-white border border-black/[0.08] overflow-hidden transition-all duration-300 hover:border-black/[0.15] hover:shadow-[0_16px_40px_-10px_rgba(0,0,0,0.05)] shadow-[0_4px_24px_rgba(0,0,0,0.02)] ${className}`.trim()}
       style={
         {
           '--torch-x': '150px',

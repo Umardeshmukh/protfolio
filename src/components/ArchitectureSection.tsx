@@ -59,14 +59,14 @@ export const ArchitectureSection: React.FC = () => {
                   onClick={() => setSelectedSkillId(skill.id)}
                   className={`w-full text-left p-5 rounded-[18px] border transition-all duration-200 flex items-start gap-4 ${
                     isSelected
-                      ? 'bg-white border-[#7c3aed]/50 shadow-[0_10px_30px_rgba(124,58,237,0.08)]'
+                      ? 'bg-white border-[#b45309]/40 shadow-[0_10px_30px_rgba(180,83,9,0.06)]'
                       : 'bg-white/70 backdrop-blur-md border-black/[0.06] hover:border-black/[0.12] hover:bg-white'
                   }`}
                 >
                   <div
                     className={`p-2.5 rounded-[12px] mt-0.5 border ${
                       isSelected
-                        ? 'bg-[#7c3aed]/10 text-[#7c3aed] border-[#7c3aed]/25'
+                        ? 'bg-[#b45309]/10 text-[#b45309] border-[#b45309]/25'
                         : 'bg-[#f8fafc] text-[#64748b] border-black/[0.06]'
                     }`}
                   >
@@ -83,7 +83,7 @@ export const ArchitectureSection: React.FC = () => {
                         {skill.title}
                       </h3>
                       {isSelected && (
-                        <span className="w-2 h-2 rounded-full bg-[#7c3aed]" />
+                        <span className="w-2 h-2 rounded-full bg-[#b45309]" />
                       )}
                     </div>
                     <p className="text-xs text-[#64748b] leading-relaxed line-clamp-2 font-sans">
@@ -122,7 +122,7 @@ export const ArchitectureSection: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs font-mono text-[#64748b]">
                 <span className="flex items-center gap-1.5 text-[#0f172a]">
-                  <Terminal className="w-3.5 h-3.5 text-[#7c3aed]" />
+                  <Terminal className="w-3.5 h-3.5 text-[#b45309]" />
                   <span>Pattern Implementation Snippet</span>
                 </span>
                 <button
@@ -157,7 +157,7 @@ export const ArchitectureSection: React.FC = () => {
                 {activeSkill.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-white border border-black/[0.08] text-[#475569] rounded-full px-3.5 py-1 text-xs font-mono font-medium transition-all hover:border-[#7c3aed] hover:text-[#7c3aed] shadow-sm"
+                    className="bg-white border border-black/[0.08] text-[#475569] rounded-full px-3.5 py-1 text-xs font-mono font-medium transition-all hover:border-[#0f172a] hover:text-[#0f172a] shadow-sm"
                   >
                     {tech}
                   </span>

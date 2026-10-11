@@ -30,7 +30,7 @@ export const BoardControls: React.FC<BoardControlsProps> = ({
       {/* Left: Category Filters */}
       <div className="flex flex-wrap items-center gap-1.5">
         <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 text-xs font-mono text-[#64748b]">
-          <SlidersHorizontal className="w-3.5 h-3.5 text-[#7c3aed]" />
+          <SlidersHorizontal className="w-3.5 h-3.5 text-[#b45309]" />
           <span>CLASSIFICATION:</span>
         </div>
         {categories.map((cat) => (
@@ -84,7 +84,7 @@ export const BoardControls: React.FC<BoardControlsProps> = ({
             }
             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-[7px] text-xs font-mono transition-all ${
               connectionMode === 'all'
-                ? 'bg-white text-[#7c3aed] border border-black/[0.08] font-semibold shadow-sm'
+                ? 'bg-white text-[#0f172a] border border-black/[0.08] font-semibold shadow-sm'
                 : 'text-[#64748b] hover:text-[#0f172a]'
             }`}
             title="Toggle between All Threads and Simplified Threads"

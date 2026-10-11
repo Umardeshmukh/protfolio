@@ -34,7 +34,7 @@ export const ExperienceSection: React.FC = () => {
                     <span className="font-semibold">{item.company}</span>
                     <span className="text-[#cbd5e1]">·</span>
                     <span className="text-[#64748b] flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#7c3aed]" />
+                      <MapPin className="w-3 h-3 text-[#b45309]" />
                       {item.location}
                     </span>
                   </div>
@@ -70,7 +70,7 @@ export const ExperienceSection: React.FC = () => {
                 {item.stack.map((st) => (
                   <span
                     key={st}
-                    className="bg-white border border-black/[0.08] text-[#475569] rounded-full px-3 py-1 text-xs font-mono font-medium transition-all hover:border-[#7c3aed] hover:text-[#7c3aed] shadow-sm"
+                    className="bg-white border border-black/[0.08] text-[#475569] rounded-full px-3 py-1 text-xs font-mono font-medium transition-all hover:border-[#0f172a] hover:text-[#0f172a] shadow-sm"
                   >
                     {st}
                   </span>

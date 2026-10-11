@@ -11,7 +11,6 @@
     --text-primary: #0F172A;
     --text-secondary: #475569;
     --text-muted: #94A3B8;
-    --accent-violet: #7C3AED;
     --accent-gold: #B45309;
     --accent-amber: #D97706;
   }
@@ -24,8 +23,8 @@
   }
 
   ::selection {
-    background-color: rgba(124, 58, 237, 0.12);
-    color: #6D28D9;
+    background-color: rgba(217, 119, 6, 0.15);
+    color: #92400E;
   }
 
   h1,
@@ -71,7 +70,7 @@
 /* Ethereal luxurious light ambient radial lighting */
 .bg-cosmic-radial {
   background-image:
-    radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.04) 0%, transparent 48%),
+    radial-gradient(circle at 15% 15%, rgba(217, 119, 6, 0.04) 0%, transparent 48%),
     radial-gradient(circle at 85% 25%, rgba(217, 119, 6, 0.035) 0%, transparent 45%),
     radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 50%);
 }
@@ -104,8 +103,8 @@
 }
 
 .glass-card:hover {
-  border-color: rgba(124, 58, 237, 0.25);
-  box-shadow: 0 20px 50px -10px rgba(124, 58, 237, 0.08);
+  border-color: rgba(15, 23, 42, 0.15);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.06);
   transform: translateY(-3px);
 }
 
@@ -116,13 +115,13 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Gradient Accent - Regal Violet to Amber */
+/* Gradient Accent - Royal Obsidian to Gold */
 .bg-gradient-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 60%, #B45309 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #334155 60%, #B45309 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -270,4 +269,91 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94A3B8;
+}
+
+/* ============================================================== */
+/* PRINT STYLESHEET: STRICT SINGLE-PAGE A4 CV                    */
+/* ============================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  /* Reset document flow & background */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely suppress all background sections, navigation & modals */
+  header,
+  main,
+  footer,
+  .bg-cosmic-radial,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Unfold modal overlay into a clean static 1-page document */
+  #resume-modal-overlay {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  #resume-modal-wrapper {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  /* Hide modal buttons / controls */
+  .resume-modal-header,
+  .resume-modal-footer {
+    display: none !important;
+  }
+
+  /* The printable CV body itself */
+  #resume-print-document {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Prevent awkward page break splits inside cards */
+  #resume-print-document > div {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
 }

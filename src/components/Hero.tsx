@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { ArrowRight, FileText, CheckCircle2, Code2, Sparkles, MapPin } from 'lucide-react';
+import { ArrowRight, FileText, CheckCircle2, Code2, Sparkles, MapPin, Mail } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { Magnetic } from '@/components/core/magnetic';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -32,10 +33,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   }, []);
 
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-grid-pattern overflow-hidden">
+    <section className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-[#FAFAF9] overflow-hidden">
       {/* Background Soft Royal Ambient Luminous Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-10 left-1/4 w-[520px] h-[520px] bg-[#7c3aed]/[0.045] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-10 left-1/4 w-[520px] h-[520px] bg-[#d97706]/[0.03] rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-8 right-1/4 w-[480px] h-[480px] bg-[#d97706]/[0.035] rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute top-1/2 right-1/3 w-[380px] h-[380px] bg-[#0ea5e9]/[0.03] rounded-full blur-[130px] pointer-events-none" />
       </div>
@@ -67,21 +68,63 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               Frontend Developer & Project Coordinator with 2+ years of experience delivering responsive React.js and Tailwind CSS applications, managing client communications, executive calendars, and remote cross-functional workflows.
             </p>
 
-            {/* Primary & Secondary Action Group */}
+            {/* Primary & Secondary Action Group with Magnetic Physics */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(15,23,42,0.15)]"
+              {/* Hire Me Button with Nested Magnetic Physics */}
+              <Magnetic
+                intensity={0.2}
+                springOptions={{ bounce: 0.1 }}
+                actionArea="global"
+                range={200}
               >
-                <span>View Projects</span>
-                <ArrowRight className="w-4 h-4 ml-2 stroke-[2.5]" />
-              </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-[0_4px_16px_rgba(15,23,42,0.15)]"
+                >
+                  <Magnetic
+                    intensity={0.1}
+                    springOptions={{ bounce: 0.1 }}
+                    actionArea="global"
+                    range={200}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <span>Hire Me</span>
+                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                    </span>
+                  </Magnetic>
+                </a>
+              </Magnetic>
+
+              {/* Contact Button with Nested Magnetic Physics */}
+              <Magnetic
+                intensity={0.2}
+                springOptions={{ bounce: 0.1 }}
+                actionArea="global"
+                range={200}
+              >
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
+                >
+                  <Magnetic
+                    intensity={0.1}
+                    springOptions={{ bounce: 0.1 }}
+                    actionArea="global"
+                    range={200}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Mail className="w-3.5 h-3.5 text-[#b45309]" />
+                      <span>Contact</span>
+                    </span>
+                  </Magnetic>
+                </a>
+              </Magnetic>
 
               <a
-                href="#about"
-                className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
+                href="#projects"
+                className="inline-flex items-center justify-center rounded-[12px] bg-transparent hover:bg-black/[0.04] px-4 py-3.5 text-sm font-medium text-[#475569] hover:text-[#0f172a] transition-all duration-200"
               >
-                <span>About & Core Skills</span>
+                <span>View Projects</span>
               </a>
 
               <button
@@ -123,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               style={{ perspective: '1000px' }}
             >
               {/* Soft Luminous Aura behind artwork */}
-              <div className="absolute -inset-6 bg-gradient-to-tr from-[#7c3aed]/15 via-[#f59e0b]/10 to-[#0ea5e9]/10 rounded-full blur-3xl opacity-60 group-hover:opacity-85 transition-all duration-700 animate-hero-glow pointer-events-none" />
+              <div className="absolute -inset-6 bg-gradient-to-tr from-[#d97706]/15 via-[#f59e0b]/10 to-[#0ea5e9]/10 rounded-full blur-3xl opacity-60 group-hover:opacity-85 transition-all duration-700 animate-hero-glow pointer-events-none" />
 
               {/* Floating Animated Image Showcase Container */}
               <div
@@ -143,7 +186,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
                 {/* Floating Badge 2: Top-Right Tech Stack */}
                 <div className="absolute -top-3 right-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-2 z-20 hover:text-[#0f172a] transition-colors">
-                  <Code2 className="w-3.5 h-3.5 text-[#7c3aed]" />
+                  <Code2 className="w-3.5 h-3.5 text-[#b45309]" />
                   <span>React · TS · Admin</span>
                 </div>
 
@@ -178,7 +221,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                       <span>Aurangabad, India</span>
                     </span>
                     <span className="text-[#0f172a] font-medium flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-[#7c3aed]" />
+                      <Sparkles className="w-3 h-3 text-[#d97706]" />
                       <span>2+ Yrs Experience</span>
                     </span>
                   </div>
@@ -187,7 +230,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 {/* Under-Card Highlights Strip */}
                 <div className="mt-2.5 px-2 flex items-center justify-between text-xs font-mono">
                   <div className="flex items-center gap-1.5 text-[#64748b]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7c3aed]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#b45309]" />
                     <span>B.Tech CS (2024)</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[#0f172a]">

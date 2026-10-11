@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Mail, Copy, Check, Send, Github, Clock, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
+import {
+  Mail,
+  Copy,
+  Check,
+  Github,
+  Linkedin,
+  Clock,
+  CheckCircle2,
+  Sparkles,
+  Phone,
+  ArrowUpRight,
+  MapPin,
+  Globe,
+} from 'lucide-react';
 import { Mascot } from 'page-mascot';
+import { Magnetic } from '@/components/core/magnetic';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    topic: 'Frontend Development Project',
-    message: '',
-  });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PORTFOLIO_DATA.personal.email);
@@ -19,38 +26,21 @@ export const ContactSection: React.FC = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    setStatus('sending');
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        topic: 'Frontend Development Project',
-        message: '',
-      });
-      setTimeout(() => setStatus('idle'), 5000);
-    }, 800);
-  };
-
   return (
-    <section id="contact" className="py-28 lg:py-40 border-t border-black/[0.05] relative">
+    <section id="contact" className="py-28 lg:py-40 border-t border-black/[0.05] relative bg-[#FAFAF9]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-4 border-b border-black/[0.05]">
           <div className="max-w-2xl space-y-4">
             <div className="text-[12px] uppercase tracking-[0.16em] text-[#b45309] font-medium font-mono flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#d97706] animate-ping" />
-              <span>04 — TRANSMISSION & CONTACT</span>
+              <span>04 — GET IN TOUCH</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.1] tracking-[-0.03em]">
-              Let's Engineer Something <span className="text-gradient-amber">Exceptional</span>
+              Let's Build Something <span className="text-gradient-amber">Exceptional</span>
             </h2>
             <p className="text-base sm:text-lg text-[#475569] leading-[1.7]">
-              Available for remote Frontend Development roles, Project Coordination, and administrative management opportunities. Reach out directly or dispatch a transmission below.
+              Available for remote Frontend Development roles, Project Coordination, and administrative management opportunities. Reach out directly via email, direct phone line, or GitHub.
             </p>
           </div>
 
@@ -68,199 +58,236 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Direct channels & Presence */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Quick Copy Email Box */}
-            <div className="p-7 sm:p-8 rounded-[22px] bg-white border border-black/[0.06] space-y-5 shadow-[0_4px_30px_rgba(0,0,0,0.02)]">
-              <div className="text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
-                Direct Communication Hub
+        {/* Clean Luxury Communication Cards Grid */}
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* Card 1: Direct Communication Channels */}
+          <div className="p-8 sm:p-9 rounded-[24px] bg-white border border-black/[0.07] space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-black/[0.05]">
+                <div className="text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
+                  <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
+                  Direct Channels
+                </div>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#16a34a]/10 text-[#15803d] border border-[#16a34a]/25 font-semibold">
+                  Quick Response
+                </span>
               </div>
 
-              {/* Email */}
-              <div className="flex items-center justify-between p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06]">
-                <div className="flex items-center gap-3 overflow-hidden">
-                  <Mail className="w-4 h-4 text-[#7c3aed] shrink-0" />
-                  <span className="font-mono text-xs sm:text-sm text-[#0f172a] truncate font-medium">
-                    {PORTFOLIO_DATA.personal.email}
+              {/* Email Box */}
+              <div className="space-y-2">
+                <span className="text-xs font-mono text-[#64748b] font-medium block">
+                  Primary Email
+                </span>
+                <div className="flex items-center justify-between p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.12] transition-colors">
+                  <a
+                    href={`mailto:${PORTFOLIO_DATA.personal.email}`}
+                    className="flex items-center gap-3 overflow-hidden group/mail"
+                  >
+                    <Mail className="w-4 h-4 text-[#b45309] shrink-0" />
+                    <span className="font-mono text-sm text-[#0f172a] group-hover/mail:text-[#b45309] transition-colors truncate font-medium">
+                      {PORTFOLIO_DATA.personal.email}
+                    </span>
+                  </a>
+
+                  <button
+                    onClick={handleCopyEmail}
+                    className="p-2 rounded-[8px] text-[#64748b] hover:text-[#0f172a] hover:bg-black/[0.04] transition-colors shrink-0"
+                    title="Copy email to clipboard"
+                    aria-label="Copy email address"
+                  >
+                    {copied ? (
+                      <Check className="w-4 h-4 text-[#16a34a]" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+
+                {copied && (
+                  <div className="text-xs text-[#15803d] font-mono flex items-center gap-1.5 pt-1 animate-fade-in">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Email address copied to clipboard!</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Phone Line Box */}
+              <div className="space-y-2">
+                <span className="text-xs font-mono text-[#64748b] font-medium block">
+                  Direct Line / Phone
+                </span>
+                <div className="flex items-center justify-between p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.12] transition-colors">
+                  <a
+                    href={`tel:${PORTFOLIO_DATA.personal.phone.replace(/\s+/g, '')}`}
+                    className="flex items-center gap-3 overflow-hidden group/phone"
+                  >
+                    <Phone className="w-4 h-4 text-[#b45309] shrink-0" />
+                    <span className="font-mono text-sm text-[#0f172a] group-hover/phone:text-[#b45309] transition-colors truncate font-medium">
+                      {PORTFOLIO_DATA.personal.phone}
+                    </span>
+                  </a>
+                  <span className="text-[11px] font-mono text-[#15803d] px-2.5 py-0.5 rounded-full bg-[#16a34a]/10 border border-[#16a34a]/25 shrink-0">
+                    Direct Line
                   </span>
                 </div>
-
-                <button
-                  onClick={handleCopyEmail}
-                  className="p-2 rounded-[8px] text-[#64748b] hover:text-[#0f172a] hover:bg-black/[0.04] transition-colors shrink-0"
-                  title="Copy email to clipboard"
-                >
-                  {copied ? (
-                    <Check className="w-4 h-4 text-[#16a34a]" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
-                  )}
-                </button>
               </div>
 
-              {copied && (
-                <div className="text-xs text-[#15803d] font-mono flex items-center gap-1.5 animate-fade-in">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Email address copied to clipboard!</span>
+              {/* Location & Languages */}
+              <div className="p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-[#475569]">
+                  <MapPin className="w-4 h-4 text-[#b45309] shrink-0" />
+                  <span>{PORTFOLIO_DATA.personal.location}</span>
                 </div>
-              )}
-
-              {/* Phone */}
-              <div className="flex items-center justify-between p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06]">
-                <div className="flex items-center gap-3 overflow-hidden">
-                  <span className="text-xs font-mono text-[#b45309] shrink-0 font-semibold">TEL:</span>
-                  <a
-                    href="tel:+918484040411"
-                    className="font-mono text-xs sm:text-sm text-[#0f172a] hover:text-[#7c3aed] transition-colors truncate font-medium"
-                  >
-                    {PORTFOLIO_DATA.personal.phone}
-                  </a>
+                <div className="flex items-center gap-2 text-[#475569]">
+                  <Globe className="w-4 h-4 text-[#b45309] shrink-0" />
+                  <span>English & Hindi Fluent</span>
                 </div>
-                <span className="text-[11px] font-mono text-[#15803d] px-2.5 py-0.5 rounded-full bg-[#16a34a]/10 border border-[#16a34a]/25">
-                  Direct Line
-                </span>
-              </div>
-
-              <div className="text-xs text-[#64748b] leading-relaxed pt-1">
-                <span>Location: </span>
-                <strong className="text-[#0f172a]">{PORTFOLIO_DATA.personal.location}</strong>
-                <span className="block mt-1">Fluent in English and Hindi for high-tempo global remote collaboration.</span>
               </div>
             </div>
 
-            {/* Timezone & Availability Card */}
-            <div className="p-6 rounded-[20px] bg-white border border-black/[0.06] space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#64748b]">
-                <Clock className="w-3.5 h-3.5 text-[#7c3aed]" />
-                <span>Operating Timezone: IST (UTC+5:30)</span>
-              </div>
-              <div className="text-sm text-[#0f172a] font-medium flex items-center gap-2.5">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16a34a] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#16a34a]" />
-                </span>
-                <span>Available for Immediate Full-Time / Contract Remote Roles</span>
-              </div>
-            </div>
-
-            {/* Social Network Links */}
-            <div className="p-6 rounded-[20px] bg-white border border-black/[0.06] flex items-center justify-between shadow-sm">
-              <span className="text-xs font-mono text-[#64748b]">Developer Profile</span>
-              <div className="flex items-center gap-3">
+            {/* Email CTA Button with Magnetic Physics */}
+            <div className="pt-4">
+              <Magnetic
+                intensity={0.2}
+                springOptions={{ bounce: 0.1 }}
+                actionArea="global"
+                range={200}
+              >
                 <a
-                  href={PORTFOLIO_DATA.personal.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-[10px] bg-[#f8fafc] border border-black/[0.08] text-xs text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors"
-                  aria-label="GitHub profile"
+                  href={`mailto:${PORTFOLIO_DATA.personal.email}?subject=Frontend%20Development%20/%20Project%20Opportunity`}
+                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-sm"
                 >
-                  <Github className="w-4 h-4 text-[#7c3aed]" />
-                  <span className="font-mono">github.com/umardesh</span>
+                  <Magnetic
+                    intensity={0.1}
+                    springOptions={{ bounce: 0.1 }}
+                    actionArea="global"
+                    range={200}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <span>Send an Email</span>
+                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                    </span>
+                  </Magnetic>
                 </a>
-              </div>
+              </Magnetic>
             </div>
           </div>
 
-          {/* Right Column: Interactive Contact Form */}
-          <div className="lg:col-span-7 p-7 sm:p-9 rounded-[22px] bg-white border border-black/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
-            <h3 className="text-xl font-display font-bold text-[#0f172a] mb-6 flex items-center gap-2.5 tracking-tight">
-              <MessageSquare className="w-5 h-5 text-[#7c3aed]" />
-              <span>Direct Transmission</span>
-            </h3>
-
-            {status === 'success' ? (
-              <div className="p-8 rounded-[16px] bg-[#f8fafc] border border-[#16a34a]/30 text-center space-y-3">
-                <div className="inline-flex p-3 rounded-full bg-[#16a34a]/15 text-[#15803d]">
-                  <CheckCircle2 className="w-6 h-6" />
+          {/* Card 2: Availability & Digital Presence */}
+          <div className="p-8 sm:p-9 rounded-[24px] bg-white border border-black/[0.07] space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-black/[0.05]">
+                <div className="text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
+                  <Clock className="w-3.5 h-3.5 text-[#d97706]" />
+                  Operational Availability
                 </div>
-                <h4 className="text-lg font-semibold text-[#0f172a]">Transmission Received</h4>
-                <p className="text-sm text-[#475569] max-w-md mx-auto">
-                  Thank you for reaching out. Your message has been routed to Mohammed Umer Deshmukh. You will receive a response shortly.
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#0284c7]/10 text-[#0369a1] border border-[#0284c7]/25 font-semibold">
+                  IST (UTC+5:30)
+                </span>
+              </div>
+
+              {/* Live Status Card */}
+              <div className="p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#64748b]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16a34a] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#16a34a]" />
+                  </span>
+                  <span className="text-[#0f172a] font-semibold">Active & Open for Roles</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+                  Available for immediate remote Frontend Development (React.js, TypeScript, Tailwind) and Project Coordination / Management positions.
                 </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono text-[#475569] mb-1.5 font-medium">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Alex Smith"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-[12px] bg-[#f8fafc] border border-black/[0.08] px-4 py-2.5 text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#7c3aed] focus:bg-white transition-colors"
-                    />
-                  </div>
 
-                  <div>
-                    <label className="block text-xs font-mono text-[#475569] mb-1.5 font-medium">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="alex@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full rounded-[12px] bg-[#f8fafc] border border-black/[0.08] px-4 py-2.5 text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#7c3aed] focus:bg-white transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono text-[#475569] mb-1.5 font-medium">
-                    Subject / Role Opportunity
-                  </label>
-                  <select
-                    value={formData.topic}
-                    onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                    className="w-full rounded-[12px] bg-[#f8fafc] border border-black/[0.08] px-4 py-2.5 text-sm text-[#0f172a] focus:outline-none focus:border-[#7c3aed] focus:bg-white transition-colors"
+              {/* Professional Profiles (GitHub & LinkedIn) */}
+              <div className="space-y-3">
+                <span className="text-xs font-mono text-[#64748b] font-medium block">
+                  Professional Profiles & Code
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* GitHub Profile */}
+                  <a
+                    href={PORTFOLIO_DATA.personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/gh"
+                    aria-label="GitHub profile"
                   >
-                    <option value="Frontend Development Project">Frontend Development (React.js / Tailwind)</option>
-                    <option value="Project Coordination Role">Project Coordination & Administrative Management</option>
-                    <option value="Full-Time Remote Position">Full-Time Remote Position (Developer / PM)</option>
-                    <option value="Freelance & Consulting">Freelance or Consulting Inquiries</option>
-                  </select>
-                </div>
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-[8px] bg-white border border-black/[0.08] flex items-center justify-center text-[#0f172a] group-hover/gh:text-[#b45309] transition-colors shrink-0 shadow-xs">
+                        <Github className="w-4 h-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="font-mono text-xs font-semibold text-[#0f172a] block truncate">
+                          GitHub
+                        </span>
+                        <span className="text-[10px] text-[#64748b] block truncate">
+                          umardesh
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#94a3b8] group-hover/gh:text-[#0f172a] group-hover/gh:translate-x-0.5 group-hover/gh:-translate-y-0.5 transition-all shrink-0 ml-1.5" />
+                  </a>
 
-                <div>
-                  <label className="block text-xs font-mono text-[#475569] mb-1.5 font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Tell me about the role, project requirements, or team..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full rounded-[12px] bg-[#f8fafc] border border-black/[0.08] px-4 py-2.5 text-sm text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#7c3aed] focus:bg-white transition-colors resize-none"
-                  />
+                  {/* LinkedIn Profile */}
+                  <a
+                    href={PORTFOLIO_DATA.personal.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/li"
+                    aria-label="LinkedIn profile"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-[8px] bg-white border border-black/[0.08] flex items-center justify-center text-[#0a66c2] group-hover/li:text-[#004182] transition-colors shrink-0 shadow-xs">
+                        <Linkedin className="w-4 h-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="font-mono text-xs font-semibold text-[#0f172a] block truncate">
+                          LinkedIn
+                        </span>
+                        <span className="text-[10px] text-[#64748b] block truncate">
+                          umer-deshmukh
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#94a3b8] group-hover/li:text-[#0f172a] group-hover/li:translate-x-0.5 group-hover/li:-translate-y-0.5 transition-all shrink-0 ml-1.5" />
+                  </a>
                 </div>
+              </div>
+            </div>
 
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 shadow-sm disabled:opacity-50"
+            {/* Direct Call / Contact CTA with Magnetic Physics */}
+            <div className="pt-4 flex flex-wrap items-center gap-3">
+              <Magnetic
+                intensity={0.2}
+                springOptions={{ bounce: 0.1 }}
+                actionArea="global"
+                range={200}
+              >
+                <a
+                  href={`tel:${PORTFOLIO_DATA.personal.phone.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
                 >
-                  {status === 'sending' ? (
-                    <span>Transmitting...</span>
-                  ) : (
-                    <>
-                      <span>Transmit Message</span>
-                      <Send className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+                  <Magnetic
+                    intensity={0.1}
+                    springOptions={{ bounce: 0.1 }}
+                    actionArea="global"
+                    range={200}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#b45309]" />
+                      <span>Call Directly</span>
+                    </span>
+                  </Magnetic>
+                </a>
+              </Magnetic>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default ContactSection;

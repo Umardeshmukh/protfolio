@@ -76,7 +76,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
           {/* Dossier Header */}
           <div className="p-6 sm:p-8 border-b border-black/[0.06] flex items-start justify-between gap-4">
             <div className="space-y-2 max-w-2xl">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#7c3aed]">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#b45309]">
                 <span>{project.category}</span>
                 <span className="text-[#cbd5e1]">·</span>
                 <span className="text-[#b45309] flex items-center gap-1 font-medium">
@@ -109,11 +109,11 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
               onClick={() => setActiveTab('overview')}
               className={`py-3 px-3 border-b-2 transition-colors whitespace-nowrap flex items-center gap-1.5 ${
                 activeTab === 'overview'
-                  ? 'border-[#7c3aed] text-[#0f172a] font-semibold'
+                  ? 'border-[#0f172a] text-[#0f172a] font-semibold'
                   : 'border-transparent text-[#64748b] hover:text-[#0f172a]'
               }`}
             >
-              <FileText className="w-3.5 h-3.5 text-[#7c3aed]" />
+              <FileText className="w-3.5 h-3.5 text-[#b45309]" />
               <span>01. Overview & Problem</span>
             </button>
             <button
@@ -121,11 +121,11 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
               onClick={() => setActiveTab('architecture')}
               className={`py-3 px-3 border-b-2 transition-colors whitespace-nowrap flex items-center gap-1.5 ${
                 activeTab === 'architecture'
-                  ? 'border-[#7c3aed] text-[#0f172a] font-semibold'
+                  ? 'border-[#0f172a] text-[#0f172a] font-semibold'
                   : 'border-transparent text-[#64748b] hover:text-[#0f172a]'
               }`}
             >
-              <Cpu className="w-3.5 h-3.5 text-[#7c3aed]" />
+              <Cpu className="w-3.5 h-3.5 text-[#b45309]" />
               <span>02. System Architecture</span>
             </button>
             <button
@@ -133,7 +133,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
               onClick={() => setActiveTab('benchmarks')}
               className={`py-3 px-3 border-b-2 transition-colors whitespace-nowrap flex items-center gap-1.5 ${
                 activeTab === 'benchmarks'
-                  ? 'border-[#7c3aed] text-[#0f172a] font-semibold'
+                  ? 'border-[#0f172a] text-[#0f172a] font-semibold'
                   : 'border-transparent text-[#64748b] hover:text-[#0f172a]'
               }`}
             >
@@ -146,7 +146,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
                 onClick={() => setActiveTab('code')}
                 className={`py-3 px-3 border-b-2 transition-colors whitespace-nowrap flex items-center gap-1.5 ${
                   activeTab === 'code'
-                    ? 'border-[#7c3aed] text-[#0f172a] font-semibold'
+                    ? 'border-[#0f172a] text-[#0f172a] font-semibold'
                     : 'border-transparent text-[#64748b] hover:text-[#0f172a]'
                 }`}
               >
@@ -200,7 +200,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
                       className="p-4 rounded-[12px] bg-[#f8fafc] border border-black/[0.06] text-center"
                     >
                       <div className="text-xs font-mono text-[#64748b]">{m.label}</div>
-                      <div className="font-mono text-lg font-bold text-[#7c3aed] mt-1">
+                      <div className="font-mono text-lg font-bold text-[#b45309] mt-1">
                         {m.value}
                       </div>
                     </div>
@@ -221,7 +221,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
                         key={i}
                         className="flex items-start gap-3 p-4 rounded-[12px] bg-[#f8fafc] border border-black/[0.06]"
                       >
-                        <span className="font-mono text-xs text-[#7c3aed] mt-0.5 font-bold">
+                        <span className="font-mono text-xs text-[#b45309] mt-0.5 font-bold">
                           0{i + 1}
                         </span>
                         <p className="text-sm text-[#475569] leading-relaxed">{hl}</p>
@@ -278,7 +278,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono text-[#64748b]">
                   <div className="flex items-center gap-1.5 text-[#0f172a]">
-                    <Terminal className="w-4 h-4 text-[#7c3aed]" />
+                    <Terminal className="w-4 h-4 text-[#b45309]" />
                     <span>{project.codeSnippet.filename}</span>
                   </div>
                   <span className="uppercase text-[#b45309] font-semibold">

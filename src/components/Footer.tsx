@@ -1,6 +1,6 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ArrowUp, Github } from 'lucide-react';
+import { ArrowUp, Github, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -54,6 +54,15 @@ export const Footer: React.FC = () => {
               aria-label="GitHub profile"
             >
               <Github className="w-4 h-4" />
+            </a>
+            <a
+              href={PORTFOLIO_DATA.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#64748b] hover:text-[#0a66c2] transition-colors p-2 rounded-lg hover:bg-black/[0.03]"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${PORTFOLIO_DATA.personal.email}`}

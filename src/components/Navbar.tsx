@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, FileText } from 'lucide-react';
+import { Magnetic } from '@/components/core/magnetic';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -69,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         aria-hidden="true"
       >
         <div
-          className="h-full bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#d97706] transition-[width] duration-75 ease-out"
+          className="h-full bg-gradient-to-r from-[#b45309] via-[#d97706] to-[#f59e0b] transition-[width] duration-75 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -93,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d97706] opacity-60" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-[#7c3aed] to-[#d97706]" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-[#b45309] to-[#d97706]" />
             </span>
             <span className="tracking-[-0.02em]">Mohammed Umer</span>
           </a>
@@ -118,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#7c3aed] to-[#d97706] rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#b45309] to-[#d97706] rounded-full" />
                   )}
                 </a>
               );
@@ -135,17 +136,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               <span>Resume</span>
             </button>
 
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#contact');
-              }}
-              className="inline-flex items-center gap-1.5 rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-4 py-2 text-xs font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(15,23,42,0.15)]"
+            <Magnetic
+              intensity={0.2}
+              springOptions={{ bounce: 0.1 }}
+              actionArea="global"
+              range={200}
             >
-              <span>Get in Touch</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('#contact');
+                }}
+                className="inline-flex items-center gap-1.5 rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-4 py-2 text-xs font-semibold text-white transition-all duration-200 shadow-[0_4px_14px_rgba(15,23,42,0.15)]"
+              >
+                <Magnetic
+                  intensity={0.1}
+                  springOptions={{ bounce: 0.1 }}
+                  actionArea="global"
+                  range={200}
+                >
+                  <span className="inline-flex items-center gap-1.5">
+                    <span>Contact</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                  </span>
+                </Magnetic>
+              </a>
+            </Magnetic>
           </div>
 
           {/* Mobile menu trigger */}
