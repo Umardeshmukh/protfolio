@@ -196,7 +196,7 @@ export const ContactSection: React.FC = () => {
                   <span className="text-[#0f172a] font-semibold">Active & Open for Roles</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-                  Available for immediate remote Frontend Development (React.js, TypeScript, Tailwind) and Project Coordination / Management positions.
+                  Available for  Frontend Development   (React.js, TypeScript, Tailwind) and Project Coordination / Management positions.
                 </p>
               </div>
 
