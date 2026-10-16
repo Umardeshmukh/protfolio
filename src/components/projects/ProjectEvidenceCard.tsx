@@ -101,7 +101,7 @@ export const ProjectEvidenceCard: React.FC<ProjectEvidenceCardProps> = ({
       <div
         className={`relative rounded-[16px] bg-[#0d0f14]/95 backdrop-blur-xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
           isHighlighted
-            ? 'border-[#b45309] shadow-[0_20px_50px_rgba(124,92,252,0.18),0_0_0_1px_rgba(124,92,252,0.4)]'
+            ? 'border-[#b45309] shadow-[0_20px_50px_rgba(217,119,6,0.18),0_0_0_1px_rgba(217,119,6,0.35)]'
             : 'border-[#232730] hover:border-[#383d4c] shadow-[0_12px_36px_rgba(0,0,0,0.45)]'
         }`}
       >

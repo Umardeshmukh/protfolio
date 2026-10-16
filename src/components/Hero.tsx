@@ -2,9 +2,10 @@ import React, { useRef, useState, useCallback } from 'react';
 import { ArrowRight, FileText, CheckCircle2, Code2, Sparkles, MapPin, Mail } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Magnetic } from '@/components/core/magnetic';
+import { LineRippleBackground } from './LineRippleBackground';
 
 interface HeroProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
@@ -32,8 +33,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
     setTilt({ rotateX: 0, rotateY: 0 });
   }, []);
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-[#FAFAF9] overflow-hidden">
+    <section id="hero" className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-[#FAFAF9] overflow-hidden">
       {/* Background Soft Royal Ambient Luminous Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
         <div className="absolute top-10 left-1/4 w-[520px] h-[520px] bg-[#d97706]/[0.03] rounded-full blur-[150px] pointer-events-none" />
@@ -41,36 +50,48 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         <div className="absolute top-1/2 right-1/3 w-[380px] h-[380px] bg-[#0ea5e9]/[0.03] rounded-full blur-[130px] pointer-events-none" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+      {/* Interactive Line Ripple Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-85">
+        <LineRippleBackground
+          strokeColor="rgba(15, 23, 42, 0.28)"
+          backgroundColor="transparent"
+          count={65}
+          movement={28}
+          force={4.5}
+          resolution={10}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
-          {/* Left Column: Main Editorial Hero with Generous Whitespace */}
+          {/* Left Column: Main Editorial Hero */}
           <div className="lg:col-span-7 space-y-8">
-            {/* Availability Indicator - Minimal Luxury Pill */}
+            {/* Small Label - Minimal Luxury Pill */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:border-black/[0.15] transition-colors">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d97706] opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d97706]" />
               </span>
-              <span className="tracking-wide">{PORTFOLIO_DATA.personal.status}</span>
+              <span className="tracking-wide">FRONTEND DEVELOPER · INDIA</span>
             </div>
 
-            {/* Display Heading: High-fashion, authoritative typography */}
+            {/* Display Heading: High-fashion typography */}
             <h1 className="text-[44px] sm:text-[58px] lg:text-[68px] xl:text-[76px] font-display font-extrabold text-[#0f172a] tracking-[-0.035em] leading-[1.05] sm:leading-[1.0] text-balance">
-              Building{' '}
+              I turn ideas into{' '}
               <span className="text-gradient-amber">
-                responsive web apps
-              </span>{' '}
-              & orchestrating client success.
+                interactive digital experiences
+              </span>
+              .
             </h1>
 
-            {/* Body Description with Generous Leading */}
+            {/* Body Description */}
             <p className="text-base sm:text-lg lg:text-[19px] text-[#475569] leading-[1.75] max-w-2xl font-normal font-sans">
-              Frontend Developer & Project Coordinator with 2+ years of experience delivering responsive React.js and Tailwind CSS applications, managing client communications, executive calendars, and remote cross-functional workflows.
+              I build responsive, user-focused web applications with React and modern frontend technologies, turning complex ideas into intuitive digital products.
             </p>
 
             {/* Primary & Secondary Action Group with Magnetic Physics */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              {/* Hire Me Button with Nested Magnetic Physics */}
+              {/* Primary CTA: Explore My Work */}
               <Magnetic
                 intensity={0.2}
                 springOptions={{ bounce: 0.1 }}
@@ -78,8 +99,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 range={200}
               >
                 <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-[0_4px_16px_rgba(15,23,42,0.15)]"
+                  href="#projects"
+                  onClick={(e) => handleScrollTo(e, 'projects')}
+                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-[0_4px_16px_rgba(15,23,42,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2"
                 >
                   <Magnetic
                     intensity={0.1}
@@ -88,14 +110,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                     range={200}
                   >
                     <span className="inline-flex items-center gap-2">
-                      <span>Hire Me</span>
+                      <span>Explore My Work</span>
                       <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                     </span>
                   </Magnetic>
                 </a>
               </Magnetic>
 
-              {/* Contact Button with Nested Magnetic Physics */}
+              {/* Secondary CTA: Get In Touch */}
               <Magnetic
                 intensity={0.2}
                 springOptions={{ bounce: 0.1 }}
@@ -104,7 +126,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               >
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
+                  onClick={(e) => handleScrollTo(e, 'contact')}
+                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2"
                 >
                   <Magnetic
                     intensity={0.1}
@@ -114,26 +137,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   >
                     <span className="inline-flex items-center gap-2">
                       <Mail className="w-3.5 h-3.5 text-[#b45309]" />
-                      <span>Contact</span>
+                      <span>Get In Touch</span>
                     </span>
                   </Magnetic>
                 </a>
               </Magnetic>
 
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center rounded-[12px] bg-transparent hover:bg-black/[0.04] px-4 py-3.5 text-sm font-medium text-[#475569] hover:text-[#0f172a] transition-all duration-200"
-              >
-                <span>View Projects</span>
-              </a>
-
-              <button
-                onClick={onOpenResume}
-                className="text-sm font-medium text-[#64748b] hover:text-[#0f172a] transition-colors duration-200 px-3 py-3 inline-flex items-center gap-1.5 font-sans"
-              >
-                <FileText className="w-4 h-4 text-[#b45309]" />
-                <span>Read Curriculum Vitae →</span>
-              </button>
+              {onOpenResume && (
+                <button
+                  type="button"
+                  onClick={onOpenResume}
+                  className="text-sm font-medium text-[#64748b] hover:text-[#0f172a] transition-colors duration-200 px-3 py-3 inline-flex items-center gap-1.5 font-sans focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0f172a] rounded-[8px]"
+                >
+                  <FileText className="w-4 h-4 text-[#b45309]" />
+                  <span>Read Curriculum Vitae →</span>
+                </button>
+              )}
             </div>
 
             {/* Proof Metrics Strip with Luxury White Cards */}
