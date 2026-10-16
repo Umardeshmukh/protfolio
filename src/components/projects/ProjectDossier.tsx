@@ -44,7 +44,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
         role="dialog"
         aria-modal="true"
         aria-labelledby="dossier-title"
-        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/40 backdrop-blur-md"
+        className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-slate-900/40 backdrop-blur-md"
         onClick={onClose}
       >
         <motion.div
@@ -52,14 +52,14 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full max-w-4xl max-h-[92vh] bg-white border border-black/[0.08] rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.16)] flex flex-col overflow-hidden text-[#0f172a]"
+          className="relative w-full max-w-4xl max-h-[94vh] bg-white border border-black/[0.08] rounded-[20px] sm:rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.16)] flex flex-col overflow-hidden text-[#0f172a]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Top Dossier Classification Header Bar */}
-          <div className="bg-[#f8fafc] px-6 py-3.5 border-b border-black/[0.06] flex items-center justify-between text-xs font-mono">
-            <div className="flex items-center gap-3">
-              <span className="px-2.5 py-0.5 rounded bg-[#c53030]/10 border border-[#c53030]/25 text-[#c53030] font-bold tracking-wider">
-                CONFIDENTIAL // CASE DOSSIER
+          <div className="bg-[#f8fafc] px-4 sm:px-6 py-2.5 sm:py-3.5 border-b border-black/[0.06] flex items-center justify-between text-[11px] sm:text-xs font-mono">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="px-2 py-0.5 rounded bg-[#c53030]/10 border border-[#c53030]/25 text-[#c53030] font-bold tracking-wider text-[10px] sm:text-xs">
+                CONFIDENTIAL // DOSSIER
               </span>
               <span className="text-[#94a3b8] hidden sm:inline">|</span>
               <span className="text-[#475569] hidden sm:inline font-mono">
@@ -69,13 +69,13 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
 
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#16a34a] animate-pulse" />
-              <span className="text-[#15803d] font-semibold text-[11px]">VERIFIED CASE FILE</span>
+              <span className="text-[#15803d] font-semibold text-[10px] sm:text-[11px]">VERIFIED CASE FILE</span>
             </div>
           </div>
 
           {/* Dossier Header */}
-          <div className="p-6 sm:p-8 border-b border-black/[0.06] flex items-start justify-between gap-4">
-            <div className="space-y-2 max-w-2xl">
+          <div className="p-4 sm:p-8 border-b border-black/[0.06] flex items-start justify-between gap-3 sm:gap-4">
+            <div className="space-y-1.5 sm:space-y-2 max-w-2xl min-w-0">
               <div className="flex items-center gap-2 text-xs font-mono text-[#b45309]">
                 <span>{project.category}</span>
                 <span className="text-[#cbd5e1]">·</span>
@@ -86,16 +86,16 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
               </div>
               <h2
                 id="dossier-title"
-                className="text-2xl sm:text-3xl font-display font-bold text-[#0f172a] tracking-tight"
+                className="text-xl sm:text-3xl font-display font-bold text-[#0f172a] tracking-tight leading-snug"
               >
                 {project.title}
               </h2>
-              <p className="text-sm text-[#475569] leading-relaxed">{project.tagline}</p>
+              <p className="text-xs sm:text-sm text-[#475569] leading-relaxed line-clamp-2 sm:line-clamp-none">{project.tagline}</p>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-[10px] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] border border-transparent hover:border-black/[0.08] transition-colors"
+              className="p-2 rounded-[10px] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] border border-black/[0.06] sm:border-transparent sm:hover:border-black/[0.08] transition-colors shrink-0"
               aria-label="Close dossier"
             >
               <X className="w-5 h-5" />
@@ -103,7 +103,7 @@ export const ProjectDossier: React.FC<ProjectDossierProps> = ({ project, onClose
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex items-center gap-2 px-6 sm:px-8 border-b border-black/[0.06] bg-[#fafaf9] text-xs font-mono overflow-x-auto">
+          <div className="flex items-center gap-1.5 px-4 sm:px-8 border-b border-black/[0.06] bg-[#fafaf9] text-xs font-mono overflow-x-auto no-scrollbar">
             <button
               type="button"
               onClick={() => setActiveTab('overview')}

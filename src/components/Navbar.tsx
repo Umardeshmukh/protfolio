@@ -13,6 +13,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
@@ -177,51 +188,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           </div>
         </div>
 
-        {/* Mobile Drawer with White Crystal Surface */}
+        {/* Mobile Backdrop & Drawer with White Crystal Surface */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[72px] bg-white/95 backdrop-blur-[24px] border-b border-black/[0.08] p-6 space-y-4 shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
-            <nav className="flex flex-col space-y-3">
-              {navLinks.map((link) => (
+          <>
+            <div
+              className="md:hidden fixed inset-0 top-[72px] bg-black/20 backdrop-blur-xs z-30"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="md:hidden fixed inset-x-0 top-[72px] z-40 bg-white/98 backdrop-blur-[24px] border-b border-black/[0.08] p-6 space-y-4 shadow-[0_24px_60px_rgba(0,0,0,0.12)] max-h-[calc(100vh-80px)] overflow-y-auto">
+              <nav className="flex flex-col space-y-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(link.href);
+                    }}
+                    className="text-base text-[#475569] hover:text-[#0f172a] py-3 px-1 border-b border-black/[0.04] flex items-center justify-between font-medium active:bg-[#f8fafc] rounded-md transition-colors"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-[#b45309] text-xs font-mono">→</span>
+                  </a>
+                ))}
+              </nav>
+
+              <div className="pt-2 flex flex-col gap-2.5">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenResume();
+                  }}
+                  className="w-full justify-center inline-flex items-center gap-2 rounded-[12px] bg-[#f8fafc] hover:bg-[#f1f5f9] border border-black/[0.08] py-3 text-sm font-medium text-[#0f172a] transition-colors active:scale-[0.99]"
+                >
+                  <FileText className="w-4 h-4 text-[#b45309]" />
+                  <span>View Resume</span>
+                </button>
+
                 <a
-                  key={link.label}
-                  href={link.href}
+                  href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick(link.href);
+                    handleNavClick('#contact');
                   }}
-                  className="text-base text-[#475569] hover:text-[#0f172a] py-2 border-b border-black/[0.04] flex items-center justify-between"
+                  className="w-full justify-center inline-flex items-center gap-2 rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] py-3 text-sm font-semibold text-white shadow-sm transition-colors active:scale-[0.99]"
                 >
-                  <span>{link.label}</span>
-                  <span className="text-[#b45309] text-xs">→</span>
+                  <span>Get in Touch</span>
+                  <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
-              ))}
-            </nav>
-
-            <div className="pt-2 flex flex-col gap-2.5">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenResume();
-                }}
-                className="w-full justify-center inline-flex items-center gap-2 rounded-[12px] bg-[#f8fafc] border border-black/[0.08] py-2.5 text-sm font-medium text-[#0f172a]"
-              >
-                <FileText className="w-4 h-4 text-[#b45309]" />
-                <span>View Resume</span>
-              </button>
-
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('#contact');
-                }}
-                className="w-full justify-center inline-flex items-center gap-2 rounded-[12px] bg-[#0f172a] py-2.5 text-sm font-semibold text-white shadow-sm"
-              >
-                <span>Get in Touch</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-              </a>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </header>
     </>

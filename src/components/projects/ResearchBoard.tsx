@@ -327,7 +327,7 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
                 </div>
 
                 {/* Mobile Sticky Note Container */}
-                <div className={`rounded-[10px] border p-5 shadow-md font-handwriting ${bgClass}`}>
+                <div className={`rounded-[12px] border p-4 sm:p-5 shadow-md font-handwriting ${bgClass}`}>
                   <div className="flex items-center justify-between pb-2 border-b border-black/10 text-[13px]">
                     <span className="font-bold opacity-80">
                       CASE FILE #{String(index + 1).padStart(2, '0')}
@@ -344,14 +344,14 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
                       onClick={() => onSelectProject(project)}
                       className="text-left group block w-full focus:outline-none"
                     >
-                      <h3 className="text-2xl font-handwriting font-bold tracking-tight leading-snug underline decoration-2 decoration-black/30 transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-handwriting font-bold tracking-tight leading-snug underline decoration-2 decoration-black/30 transition-colors">
                         {project.title}
                       </h3>
                       <span className="text-[12px] font-handwriting font-bold text-black/70 block mt-1">
-                        👉 Tap name to view case file
+                        👉 Tap name to inspect case file
                       </span>
                     </button>
-                    <p className="text-[15px] font-handwriting mt-2 leading-relaxed opacity-90">
+                    <p className="text-[14px] sm:text-[15px] font-handwriting mt-2 leading-relaxed opacity-90">
                       {project.description}
                     </p>
                   </div>
@@ -361,24 +361,36 @@ export const ResearchBoard: React.FC<ResearchBoardProps> = ({
                     {project.tags.slice(0, 4).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 rounded bg-black/10 text-[12px] font-handwriting font-semibold"
+                        className="px-2 py-0.5 rounded bg-black/10 text-[11px] sm:text-[12px] font-handwriting font-semibold"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Action row */}
-                  <div className="mt-3 pt-2.5 border-t border-black/10 flex items-center justify-between text-[13px] font-handwriting">
-                    <button
-                      type="button"
-                      onClick={() => onSelectProject(project)}
-                      className="font-bold text-[#b45309] underline hover:text-[#0f172a] transition-colors"
-                    >
-                      Open Case File Details →
-                    </button>
+                  {/* Action row with direct Live Link & Dossier trigger */}
+                  <div className="mt-4 pt-3 border-t border-black/10 flex flex-wrap items-center justify-between gap-2 text-[13px] font-handwriting">
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => onSelectProject(project)}
+                        className="font-bold text-[#b45309] underline hover:text-[#0f172a] transition-colors py-1"
+                      >
+                        Open Case File Details →
+                      </button>
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-bold text-[#0f172a] bg-black/10 hover:bg-black/15 px-2.5 py-1 rounded text-[12px] flex items-center gap-1 transition-colors"
+                        >
+                          <span>Live ↗</span>
+                        </a>
+                      )}
+                    </div>
                     {project.metrics?.[0] && (
-                      <span className="font-bold text-black/80 text-[13px]">
+                      <span className="font-bold text-black/80 text-[12px] sm:text-[13px]">
                         {project.metrics[0].value}
                       </span>
                     )}

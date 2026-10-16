@@ -8,11 +8,11 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-black/[0.05] bg-[#FAFAF9] py-16 text-[#64748b] relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <footer className="border-t border-black/[0.05] bg-[#FAFAF9] py-12 sm:py-16 text-[#64748b] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Identity and copyright */}
-        <div className="space-y-1 text-center sm:text-left">
-          <div className="text-sm font-bold text-[#0f172a] font-display flex items-center justify-center sm:justify-start gap-2.5">
+        <div className="space-y-1 text-center md:text-left">
+          <div className="text-sm font-bold text-[#0f172a] font-display flex flex-wrap items-center justify-center md:justify-start gap-2">
             <span className="w-2 h-2 rounded-full bg-[#d97706]" />
             <span>Mohammed Umer Deshmukh</span>
             <span className="text-xs text-[#94a3b8] font-normal font-sans">
@@ -22,27 +22,27 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Center: Clean links */}
-        <div className="flex items-center gap-6 text-xs font-medium font-mono">
-          <a href="#about" className="text-[#64748b] hover:text-[#0f172a] transition-colors">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium font-mono">
+          <a href="#about" className="text-[#64748b] hover:text-[#0f172a] transition-colors py-1">
             About
           </a>
-          <a href="#projects" className="text-[#64748b] hover:text-[#0f172a] transition-colors">
+          <a href="#projects" className="text-[#64748b] hover:text-[#0f172a] transition-colors py-1">
             Projects
           </a>
-          <a href="#architecture" className="text-[#64748b] hover:text-[#0f172a] transition-colors">
+          <a href="#architecture" className="text-[#64748b] hover:text-[#0f172a] transition-colors py-1">
             Architecture
           </a>
-          <a href="#experience" className="text-[#64748b] hover:text-[#0f172a] transition-colors">
+          <a href="#experience" className="text-[#64748b] hover:text-[#0f172a] transition-colors py-1">
             Experience
           </a>
-          <a href="#contact" className="text-[#64748b] hover:text-[#0f172a] transition-colors">
+          <a href="#contact" className="text-[#64748b] hover:text-[#0f172a] transition-colors py-1">
             Contact
           </a>
         </div>
 
         {/* Right: Social & Back to top */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex items-center gap-2.5">
             <a
               href={PORTFOLIO_DATA.personal.github}
               target="_blank"
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
 
           <button
             onClick={scrollToTop}
-            className="p-2.5 rounded-[10px] bg-white border border-black/[0.08] text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors shadow-sm"
+            className="p-2 sm:p-2.5 rounded-[10px] bg-white border border-black/[0.08] text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors shadow-sm"
             aria-label="Back to top"
             title="Scroll to top"
           >

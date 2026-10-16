@@ -42,12 +42,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center pt-[130px] pb-20 lg:pt-[160px] lg:pb-32 bg-[#FAFAF9] overflow-hidden">
+    <section id="hero" className="relative min-h-[85vh] sm:min-h-[92vh] flex items-center pt-[100px] pb-14 sm:pt-[130px] sm:pb-20 lg:pt-[160px] lg:pb-32 bg-[#FAFAF9] overflow-hidden">
       {/* Background Soft Royal Ambient Luminous Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-10 left-1/4 w-[520px] h-[520px] bg-[#d97706]/[0.03] rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-8 right-1/4 w-[480px] h-[480px] bg-[#d97706]/[0.035] rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/2 right-1/3 w-[380px] h-[380px] bg-[#0ea5e9]/[0.03] rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-10 left-1/4 w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-[#d97706]/[0.03] rounded-full blur-[120px] sm:blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-8 right-1/4 w-[300px] sm:w-[480px] h-[300px] sm:h-[480px] bg-[#d97706]/[0.035] rounded-full blur-[110px] sm:blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/3 w-[260px] sm:w-[380px] h-[260px] sm:h-[380px] bg-[#0ea5e9]/[0.03] rounded-full blur-[100px] sm:blur-[130px] pointer-events-none" />
       </div>
 
       {/* Interactive Line Ripple Background */}
@@ -62,12 +62,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-16 items-center">
           {/* Left Column: Main Editorial Hero */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             {/* Small Label - Minimal Luxury Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:border-black/[0.15] transition-colors">
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white border border-black/[0.08] text-[11px] sm:text-xs font-mono text-[#475569] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:border-black/[0.15] transition-colors">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d97706] opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d97706]" />
@@ -76,7 +76,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
 
             {/* Display Heading: High-fashion typography */}
-            <h1 className="text-[44px] sm:text-[58px] lg:text-[68px] xl:text-[76px] font-display font-extrabold text-[#0f172a] tracking-[-0.035em] leading-[1.05] sm:leading-[1.0] text-balance">
+            <h1 className="text-[34px] xs:text-[40px] sm:text-[54px] lg:text-[68px] xl:text-[76px] font-display font-extrabold text-[#0f172a] tracking-[-0.035em] leading-[1.08] sm:leading-[1.0] text-balance">
               I turn ideas into{' '}
               <span className="text-gradient-amber">
                 interactive digital experiences
@@ -85,12 +85,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </h1>
 
             {/* Body Description */}
-            <p className="text-base sm:text-lg lg:text-[19px] text-[#475569] leading-[1.75] max-w-2xl font-normal font-sans">
+            <p className="text-sm sm:text-lg lg:text-[19px] text-[#475569] leading-[1.7] sm:leading-[1.75] max-w-2xl font-normal font-sans">
               I build responsive, user-focused web applications with React and modern frontend technologies, turning complex ideas into intuitive digital products.
             </p>
 
             {/* Primary & Secondary Action Group with Magnetic Physics */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
               {/* Primary CTA: Explore My Work */}
               <Magnetic
                 intensity={0.2}
@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <a
                   href="#projects"
                   onClick={(e) => handleScrollTo(e, 'projects')}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-[0_4px_16px_rgba(15,23,42,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-[0_4px_16px_rgba(15,23,42,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2 active:scale-[0.98]"
                 >
                   <Magnetic
                     intensity={0.1}
@@ -127,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <a
                   href="#contact"
                   onClick={(e) => handleScrollTo(e, 'contact')}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0f172a] focus-visible:ring-offset-2 active:scale-[0.98]"
                 >
                   <Magnetic
                     intensity={0.1}
@@ -147,7 +147,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <button
                   type="button"
                   onClick={onOpenResume}
-                  className="text-sm font-medium text-[#64748b] hover:text-[#0f172a] transition-colors duration-200 px-3 py-3 inline-flex items-center gap-1.5 font-sans focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0f172a] rounded-[8px]"
+                  className="w-full sm:w-auto justify-center text-sm font-medium text-[#64748b] hover:text-[#0f172a] transition-colors duration-200 px-3 py-3 inline-flex items-center gap-1.5 font-sans focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0f172a] rounded-[8px]"
                 >
                   <FileText className="w-4 h-4 text-[#b45309]" />
                   <span>Read Curriculum Vitae →</span>
@@ -156,17 +156,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
 
             {/* Proof Metrics Strip with Luxury White Cards */}
-            <div className="pt-8 border-t border-black/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
+            <div className="pt-6 sm:pt-8 border-t border-black/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
               {PORTFOLIO_DATA.metrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-[14px] bg-white border border-black/[0.06] space-y-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-black/[0.12] transition-colors"
+                  className="p-3 sm:p-4 rounded-[12px] sm:rounded-[14px] bg-white border border-black/[0.06] space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-black/[0.12] transition-colors"
                 >
-                  <div className="font-display font-bold text-xl sm:text-2xl text-[#0f172a] tabular-nums tracking-tight flex items-baseline gap-1">
+                  <div className="font-display font-bold text-lg sm:text-2xl text-[#0f172a] tabular-nums tracking-tight flex items-baseline gap-1">
                     <span>{m.value}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
                   </div>
-                  <div className="text-[11px] font-mono text-[#64748b] leading-tight">
+                  <div className="text-[10px] sm:text-[11px] font-mono text-[#64748b] leading-tight">
                     {m.label}
                   </div>
                 </div>
@@ -198,13 +198,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 }}
               >
                 {/* Floating Badge 1: Top-Left Availability */}
-                <div className="absolute -top-3 left-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-xs font-mono text-[#0f172a] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-1 z-20">
+                <div className="absolute -top-3 left-2 sm:left-4 flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-[10px] sm:text-xs font-mono text-[#0f172a] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-1 z-20">
                   <span className="w-2 h-2 rounded-full bg-[#d97706] animate-pulse" />
                   <span>Available for Remote Roles</span>
                 </div>
 
                 {/* Floating Badge 2: Top-Right Tech Stack */}
-                <div className="absolute -top-3 right-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-xs font-mono text-[#475569] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-2 z-20 hover:text-[#0f172a] transition-colors">
+                <div className="absolute -top-3 right-2 sm:right-4 hidden xs:flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.08] text-[10px] sm:text-xs font-mono text-[#475569] shadow-[0_6px_20px_rgba(0,0,0,0.06)] animate-badge-float-2 z-20 hover:text-[#0f172a] transition-colors">
                   <Code2 className="w-3.5 h-3.5 text-[#b45309]" />
                   <span>React · TS · Admin</span>
                 </div>

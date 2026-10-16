@@ -27,31 +27,31 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-28 lg:py-40 border-t border-black/[0.05] relative bg-[#FAFAF9]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-24 lg:py-40 border-t border-black/[0.05] relative bg-[#FAFAF9]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-4 border-b border-black/[0.05]">
-          <div className="max-w-2xl space-y-4">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-[#b45309] font-medium font-mono flex items-center gap-2">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 pb-4 border-b border-black/[0.05]">
+          <div className="max-w-2xl space-y-3 sm:space-y-4">
+            <div className="text-[11px] sm:text-[12px] uppercase tracking-[0.16em] text-[#b45309] font-medium font-mono flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#d97706] animate-ping" />
               <span>04 — GET IN TOUCH</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.1] tracking-[-0.03em]">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.15] sm:leading-[1.1] tracking-[-0.03em]">
               Let's Build Something <span className="text-gradient-amber">Exceptional</span>
             </h2>
-            <p className="text-base sm:text-lg text-[#475569] leading-[1.7]">
+            <p className="text-sm sm:text-lg text-[#475569] leading-[1.7]">
               Available for remote Frontend Development roles, Project Coordination, and administrative management opportunities. Reach out directly via email, direct phone line, or GitHub.
             </p>
           </div>
 
           {/* Interactive Page Mascot */}
-          <div className="flex flex-col items-center justify-center self-start md:self-end">
-            <div className="p-3.5 rounded-2xl bg-white border border-black/[0.08] shadow-sm flex flex-col items-center relative group">
+          <div className="flex flex-col items-center justify-center self-center md:self-end">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-black/[0.08] shadow-sm flex flex-col items-center relative group">
               <Mascot
                 directions="/mascots/beard-directions.webp"
                 reactions="/mascots/beard-reactions.webp"
               />
-              <span className="text-[11px] font-mono text-[#64748b] tracking-wider mt-1 opacity-80 group-hover:text-[#b45309] transition-colors">
+              <span className="text-[10px] sm:text-[11px] font-mono text-[#64748b] tracking-wider mt-1 opacity-80 group-hover:text-[#b45309] transition-colors">
                 Click to poke!
               </span>
             </div>
@@ -59,16 +59,16 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* Clean Luxury Communication Cards Grid */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           {/* Card 1: Direct Communication Channels */}
-          <div className="p-8 sm:p-9 rounded-[24px] bg-white border border-black/[0.07] space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
-            <div className="space-y-6">
+          <div className="p-5 sm:p-8 md:p-9 rounded-[20px] sm:rounded-[24px] bg-white border border-black/[0.07] space-y-5 sm:space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div className="space-y-5 sm:space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-black/[0.05]">
-                <div className="text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
+                <div className="text-[11px] sm:text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
                   <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
                   Direct Channels
                 </div>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#16a34a]/10 text-[#15803d] border border-[#16a34a]/25 font-semibold">
+                <span className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#16a34a]/10 text-[#15803d] border border-[#16a34a]/25 font-semibold">
                   Quick Response
                 </span>
               </div>
@@ -155,7 +155,7 @@ export const ContactSection: React.FC = () => {
               >
                 <a
                   href={`mailto:${PORTFOLIO_DATA.personal.email}?subject=Frontend%20Development%20/%20Project%20Opportunity`}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-sm active:scale-[0.98]"
                 >
                   <Magnetic
                     intensity={0.1}
@@ -174,20 +174,20 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Card 2: Availability & Digital Presence */}
-          <div className="p-8 sm:p-9 rounded-[24px] bg-white border border-black/[0.07] space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
-            <div className="space-y-6">
+          <div className="p-5 sm:p-8 md:p-9 rounded-[20px] sm:rounded-[24px] bg-white border border-black/[0.07] space-y-5 sm:space-y-6 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div className="space-y-5 sm:space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-black/[0.05]">
-                <div className="text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
+                <div className="text-[11px] sm:text-xs font-mono uppercase text-[#b45309] tracking-wider flex items-center gap-2 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#d97706]" />
                   Operational Availability
                 </div>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#0284c7]/10 text-[#0369a1] border border-[#0284c7]/25 font-semibold">
+                <span className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#0284c7]/10 text-[#0369a1] border border-[#0284c7]/25 font-semibold">
                   IST (UTC+5:30)
                 </span>
               </div>
 
               {/* Live Status Card */}
-              <div className="p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] space-y-2">
+              <div className="p-3.5 sm:p-4 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] space-y-2">
                 <div className="flex items-center gap-2 text-xs font-mono text-[#64748b]">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16a34a] opacity-75" />
@@ -211,7 +211,7 @@ export const ContactSection: React.FC = () => {
                     href={PORTFOLIO_DATA.personal.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/gh"
+                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/gh active:scale-[0.99]"
                     aria-label="GitHub profile"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
@@ -235,7 +235,7 @@ export const ContactSection: React.FC = () => {
                     href={PORTFOLIO_DATA.personal.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/li"
+                    className="flex items-center justify-between p-3.5 rounded-[14px] bg-[#f8fafc] border border-black/[0.06] hover:border-black/[0.15] hover:bg-white transition-all group/li active:scale-[0.99]"
                     aria-label="LinkedIn profile"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
@@ -267,7 +267,7 @@ export const ContactSection: React.FC = () => {
               >
                 <a
                   href={`tel:${PORTFOLIO_DATA.personal.phone.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] bg-white border border-black/[0.08] hover:border-black/[0.18] hover:bg-[#f8fafc] px-6 py-3.5 text-sm font-medium text-[#0f172a] transition-all duration-200 shadow-sm active:scale-[0.98]"
                 >
                   <Magnetic
                     intensity={0.1}

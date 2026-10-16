@@ -58,7 +58,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   return (
     <section
       id="projects"
-      className="relative py-28 lg:py-40 border-t border-black/[0.05] bg-[#FAFAF9] text-[#0f172a] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-40 border-t border-black/[0.05] bg-[#FAFAF9] text-[#0f172a] overflow-hidden"
     >
       {/* Subtle background ambient glow */}
       <div
@@ -66,38 +66,38 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         {/* ============================================================== */}
         {/* 3. SECTION HEADER                                              */}
         {/* ============================================================== */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-black/[0.05]">
-          <div className="max-w-2xl space-y-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 pb-4 border-b border-black/[0.05]">
+          <div className="max-w-2xl space-y-2.5 sm:space-y-3">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2.5 text-xs font-mono tracking-[0.16em] text-[#b45309] font-semibold uppercase">
+            <div className="flex items-center gap-2.5 text-[11px] sm:text-xs font-mono tracking-[0.16em] text-[#b45309] font-semibold uppercase">
               <span className="w-2 h-2 rounded-full bg-[#d97706]" />
               <span>FIELD NOTES / 01</span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.1] tracking-[-0.03em]">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[48px] font-display font-bold text-[#0f172a] leading-[1.15] sm:leading-[1.1] tracking-[-0.03em]">
               Projects Under Investigation
             </h2>
 
             {/* Supporting Text */}
             <div className="flex flex-wrap items-center gap-2">
-              <p className="text-base sm:text-lg text-[#475569] leading-[1.7]">
+              <p className="text-sm sm:text-lg text-[#475569] leading-[1.7]">
                 A closer look at the ideas, systems and experiments I've been building.
               </p>
-              <span className="font-handwriting text-lg text-[#b45309] font-semibold -rotate-1 hidden sm:inline-block">
+              <span className="font-handwriting text-base sm:text-lg text-[#b45309] font-semibold -rotate-1 hidden sm:inline-block">
                 ~ handwritten case files & research wall ~
               </span>
             </div>
           </div>
 
           {/* Dynamic Case Status Indicator */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <div className="px-4 py-2 rounded-[12px] bg-white border border-black/[0.08] flex items-center gap-2.5 text-xs font-mono shadow-sm">
-              <FolderKanban className="w-4 h-4 text-[#b45309]" />
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-[12px] bg-white border border-black/[0.08] flex items-center gap-2 text-xs font-mono shadow-sm">
+              <FolderKanban className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#b45309]" />
               <span className="text-[#64748b]">STATUS:</span>
               <span className="text-[#0f172a] font-bold">CASE FILES: {caseCountFormatted}</span>
             </div>

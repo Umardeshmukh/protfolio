@@ -42,31 +42,32 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       role="dialog"
       aria-modal="true"
       id="resume-modal-overlay"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/40 backdrop-blur-md animate-fade-in print:p-0 print:bg-white print:static print:block"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-slate-900/40 backdrop-blur-md animate-fade-in print:p-0 print:bg-white print:static print:block"
       onClick={onClose}
     >
       <div
         id="resume-modal-wrapper"
-        className="relative w-full max-w-3xl max-h-[92vh] bg-white border border-black/[0.08] rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.16)] flex flex-col overflow-hidden text-[#0f172a] print:border-none print:shadow-none print:rounded-none print:max-h-none print:w-full print:bg-white"
+        className="relative w-full max-w-3xl max-h-[94vh] bg-white border border-black/[0.08] rounded-[20px] sm:rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.16)] flex flex-col overflow-hidden text-[#0f172a] print:border-none print:shadow-none print:rounded-none print:max-h-none print:w-full print:bg-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header (Hidden on Print) */}
-        <div className="resume-modal-header flex items-center justify-between p-6 border-b border-black/[0.06] bg-[#f8fafc] print:hidden">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#d97706]" />
-            <h3 className="text-base font-display font-semibold text-[#0f172a]">
+        <div className="resume-modal-header flex items-center justify-between p-4 sm:p-6 border-b border-black/[0.06] bg-[#f8fafc] print:hidden gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#d97706] shrink-0" />
+            <h3 className="text-sm sm:text-base font-display font-semibold text-[#0f172a] truncate">
               Curriculum Vitae — {PORTFOLIO_DATA.personal.name}
             </h3>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] border border-black/[0.08] bg-white text-xs font-mono text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-[8px] border border-black/[0.08] bg-white text-xs font-mono text-[#475569] hover:text-[#0f172a] hover:border-black/[0.15] transition-colors shadow-sm"
               title="Print document"
             >
               <Printer className="w-3.5 h-3.5 text-[#b45309]" />
-              <span>Print / PDF (1 Page)</span>
+              <span className="hidden xs:inline">Print / PDF</span>
+              <span className="xs:hidden">PDF</span>
             </button>
 
             <button
@@ -82,7 +83,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         {/* Scrollable CV Body / Single Page Print Document */}
         <div
           id="resume-print-document"
-          className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 sm:space-y-7 bg-white text-[#0f172a] print:p-0 print:space-y-2.5 print:overflow-visible"
+          className="flex-1 overflow-y-auto p-4 sm:p-10 space-y-4 sm:space-y-7 bg-white text-[#0f172a] print:p-0 print:space-y-2.5 print:overflow-visible"
         >
           {/* Header Contact Block */}
           <div className="border-b border-black/[0.06] pb-5 print:pb-2 space-y-2.5 print:space-y-1">
@@ -303,13 +304,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Footer (Hidden on Print) */}
-        <div className="resume-modal-footer p-4 sm:p-6 border-t border-black/[0.06] bg-[#f8fafc] flex items-center justify-between print:hidden">
-          <div className="text-xs text-[#64748b] font-mono">
+        <div className="resume-modal-footer p-3.5 sm:p-6 border-t border-black/[0.06] bg-[#f8fafc] flex flex-col sm:flex-row items-center justify-between gap-3 print:hidden">
+          <div className="text-xs text-[#64748b] font-mono text-center sm:text-left">
             {PORTFOLIO_DATA.personal.name} — Verified Curriculum Vitae
           </div>
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-2 rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 rounded-[12px] bg-[#0f172a] hover:bg-[#1e293b] px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all active:scale-[0.98]"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Print / Save PDF (1 Page)</span>
