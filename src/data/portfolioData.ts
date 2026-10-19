@@ -49,7 +49,7 @@ export const PORTFOLIO_DATA = {
     location: 'Aurangabad, India',
     phone: '+91 8484040411',
     email: 'umardesh@gmail.com',
-    github: 'https://github.com/umardesh',
+    github: 'https://github.com/Umardeshmukh',
     linkedin: 'https://www.linkedin.com/in/umer-deshmukh-5058a0186/',
     avatar: '/heroimg.jpg',
     heroImage: '/heroimg.jpg',
@@ -125,7 +125,7 @@ export const PORTFOLIO_DATA = {
   };
 };`,
       },
-      githubUrl: 'https://github.com/umardesh',
+      githubUrl: 'https://github.com/Umardeshmukh',
       demoUrl: 'https://poshanregister.vercel.app/',
       visualType: 'stream-db',
     },
@@ -171,7 +171,7 @@ export const PORTFOLIO_DATA = {
   }, [properties, mapBounds]);
 };`,
       },
-      githubUrl: 'https://github.com/umardesh',
+      githubUrl: 'https://github.com/Umardeshmukh',
       demoUrl: 'https://propertyconnect-amber.vercel.app/',
       visualType: 'vector-engine',
     },
@@ -220,7 +220,7 @@ export const PORTFOLIO_DATA = {
   };
 };`,
       },
-      githubUrl: 'https://github.com/umardesh',
+      githubUrl: 'https://github.com/Umardeshmukh',
       demoUrl: 'https://devchandrama.vercel.app/',
       visualType: 'crdt-collab',
     },
@@ -271,7 +271,7 @@ export const PORTFOLIO_DATA = {
   };
 };`,
       },
-      githubUrl: 'https://github.com/umardesh',
+      githubUrl: 'https://github.com/Umardeshmukh',
       demoUrl: 'https://construction-site-ten-jade.vercel.app/',
       visualType: 'cloud-mesh',
     },

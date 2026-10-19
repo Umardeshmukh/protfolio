@@ -223,7 +223,7 @@ export const ContactSection: React.FC = () => {
                           GitHub
                         </span>
                         <span className="text-[10px] text-[#64748b] block truncate">
-                          umardesh
+                          Umardeshmukh
                         </span>
                       </div>
                     </div>

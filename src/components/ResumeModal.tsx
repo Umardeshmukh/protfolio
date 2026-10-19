@@ -119,7 +119,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 className="flex items-center gap-1 hover:text-[#0f172a] transition-colors"
               >
                 <Github className="w-3 h-3 text-[#b45309]" />
-                github.com/umardesh
+                github.com/Umardeshmukh
               </a>
               <span className="text-black/20">·</span>
               <a
