@@ -33,7 +33,7 @@ export const ExperienceSection: React.FC = () => {
             Professional Experience & Milestones
           </h2>
           <p className="text-sm sm:text-lg text-[#475569] leading-[1.7] font-sans">
-            Track record of developing responsive web applications and managing cross-functional remote project operations at iTUX Technologies.
+            Track record of developing responsive web applications, system design, and managing cross-functional remote project operations at GITS Technocrats Solutions.
           </p>
         </div>
 

@@ -151,17 +151,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </h2>
             <div className="flex flex-wrap gap-1.5 print:gap-1 text-xs print:text-[9px]">
               {[
+                'React.js',
+                'JavaScript / TypeScript',
+                'Tailwind CSS',
+                'System Design',
                 'Project Coordination',
                 'Administrative Management',
                 'Client Communication',
-                'Executive Calendar & Scheduling',
-                'Documentation & Reporting',
+                'Requirement Gathering',
                 'CRM & Lead Management',
-                'Advanced Excel & MIS',
-                'React.js',
-                'Tailwind CSS',
-                'JavaScript / TypeScript',
-                'Remote Cross-Functional Teams',
+                'Excel Reporting',
+                'SOP Creation',
+                'Calendar Management',
               ].map((comp) => (
                 <span
                   key={comp}
@@ -182,14 +183,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs print:text-[10.5px] gap-1">
                 <div>
                   <span className="font-semibold text-[#0f172a] text-sm print:text-xs block">
-                    iTUX Technologies
+                    {PORTFOLIO_DATA.experience[0].company}
                   </span>
                   <span className="text-[#b45309] font-medium print:text-[10px]">
-                    Frontend Developer & Admin Management
+                    {PORTFOLIO_DATA.experience[0].role}
                   </span>
                 </div>
                 <span className="font-mono text-[#b45309] bg-white px-2 py-0.5 rounded-[6px] border border-black/[0.08] text-xs print:text-[9.5px]">
-                  Dec 2023 – Present
+                  {PORTFOLIO_DATA.experience[0].period}
                 </span>
               </div>
 
@@ -236,28 +237,28 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="grid grid-cols-1 sm:grid-cols-3 print:grid-cols-3 gap-2.5 print:gap-1.5 text-xs">
               <div className="p-3 print:p-2 rounded-[12px] print:rounded-[6px] bg-[#f8fafc] border border-black/[0.06] space-y-0.5">
                 <span className="font-semibold block text-[11px] print:text-[9.5px] uppercase tracking-wide text-[#b45309]">
-                  Technical
+                  Frontend & UI
                 </span>
                 <p className="text-[11px] print:text-[9px] text-[#475569] leading-relaxed print:leading-snug">
-                  React.js, JavaScript, Python, HTML5, CSS3, Tailwind CSS, MySQL, Git, GitHub.
+                  React.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Progressive Web Apps, Framer Motion.
                 </p>
               </div>
 
               <div className="p-3 print:p-2 rounded-[12px] print:rounded-[6px] bg-[#f8fafc] border border-black/[0.06] space-y-0.5">
                 <span className="font-semibold block text-[11px] print:text-[9.5px] uppercase tracking-wide text-[#b45309]">
-                  Business & PM
+                  Backend, Data & Tools
                 </span>
                 <p className="text-[11px] print:text-[9px] text-[#475569] leading-relaxed print:leading-snug">
-                  Project Coordination, Client Communication, Executive Assistance, Excel MIS.
+                  Supabase, PostgreSQL, MySQL, Python, Git, GitHub, Leaflet.js, ExcelJS, jsPDF, AWS basics.
                 </p>
               </div>
 
               <div className="p-3 print:p-2 rounded-[12px] print:rounded-[6px] bg-[#f8fafc] border border-black/[0.06] space-y-0.5">
                 <span className="font-semibold block text-[11px] print:text-[9.5px] uppercase tracking-wide text-[#b45309]">
-                  Soft Skills
+                  Operations & Soft Skills
                 </span>
                 <p className="text-[11px] print:text-[9px] text-[#475569] leading-relaxed print:leading-snug">
-                  Problem Solving, Time Management, Agile Collaboration, Conflict Resolution.
+                  Project Coordination, Client Communication, CRM & Leads, SOPs, Problem Solving, Collaboration.
                 </p>
               </div>
             </div>
@@ -296,7 +297,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   ))}
                 </div>
                 <div className="pt-1 border-t border-black/[0.06] text-[10px] print:text-[9px] text-[#64748b]">
-                  <strong className="text-[#0f172a]">Languages:</strong> English, Hindi
+                  <strong className="text-[#0f172a]">Languages:</strong> {PORTFOLIO_DATA.languages.join(', ')}
                 </div>
               </div>
             </div>

@@ -87,7 +87,7 @@ export const AboutSection: React.FC = () => {
                     <div className="px-5 pb-5 sm:px-10 sm:pb-10 pt-2 border-t border-black/[0.05]">
                       <div className="space-y-3 sm:space-y-4 text-xs sm:text-base text-[#475569] leading-[1.7] sm:leading-[1.75] font-sans">
                         <p>
-                          At iTUX Technologies, I operate at the intersection of frontend web engineering and administrative management. I develop responsive, accessible user interfaces using React.js, JavaScript, and Tailwind CSS while simultaneously steering multiple client projects toward on-time completion.
+                          At GITS Technocrats Solutions, I operated as a System Design Engineer at the intersection of frontend web development and project coordination. I developed responsive, accessible user interfaces using React.js, JavaScript, and Tailwind CSS while translating client requirements and steering projects toward on-time completion.
                         </p>
                         <p>
                           My background spans client communication, requirement gathering, calendar operations, CRM updates, advanced Excel reporting, and authoring Standard Operating Procedures (SOPs). I believe great digital products require not just clean components, but also crystal-clear communication and operational discipline.
